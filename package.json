@@ -1,14 +1,15 @@
 {
   "name": "warmsearch-pc",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-plus": "^1.0.2-beta.33",
     "element-ui": "^2.15.1",
     "element-ui-plus": "^1.0.0",
     "vue": "^3.0.0",
