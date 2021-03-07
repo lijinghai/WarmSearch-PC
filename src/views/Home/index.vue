@@ -4,7 +4,6 @@
  * @Date: 2021/3/7
  -->
 <template>
-<<<<<<< HEAD
 <div class="home">
   <!--轮播图-->
   <div class="banner">
@@ -20,10 +19,7 @@
     <section class="w mt30 clearfix"></section>
     <section class="w mt30 clearfix"></section>
   </div>
-=======
-<div>
-  <h2>首页组件</h2>
->>>>>>> main
+
 </div>
 </template>
 
@@ -33,7 +29,7 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
+
 <style lang="scss" scoped>
 .home {
   display: flex;
@@ -343,8 +339,4 @@ ul.box {
     height: 100%;
   }
 }
-=======
-<style scoped>
-
->>>>>>> main
 </style>
