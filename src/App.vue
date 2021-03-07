@@ -1,6 +1,6 @@
 <template>
-  <div id="app" name="app">
-
+  <div id="app">
+    <router-view class="main"></router-view>
   </div>
 </template>
 
@@ -8,6 +8,15 @@
 
 </script>
 
-<style>
+<style lang='scss'>
+@import "assets/style/index.scss";
+  #app{
+    height: 100%;
+  }
+  .main{
+    background: #edededed;
+    overflow: hidden;
+    width: 100%;
+  }
 
 </style>
