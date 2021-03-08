@@ -5,7 +5,7 @@
  -->
 <template>
 <div>
-  <h1>Goods</h1>
+  <h1>物品信息</h1>
 </div>
 </template>
 
