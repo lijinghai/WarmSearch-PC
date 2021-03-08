@@ -8,9 +8,12 @@
   <!--轮播图-->
   <div class="banner">
     <el-carousel indicator-position="outside" height="480px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3>{{item}}</h3>
+      <el-carousel-item v-for="item in  banner" :key="item.id">
+        <img v-if='item.url' :src="item.url" class="img1" alt />
       </el-carousel-item>
+<!--      <el-carousel-item v-for="item in 4" :key="item">-->
+<!--        <h3>{{item}}</h3>-->
+<!--      </el-carousel-item>-->
     </el-carousel>
   </div>
   <div>
@@ -28,13 +31,26 @@ export default {
   data() {
     return {
       //存储轮播图
-      banner: []
+      banner: [],
+      homList: []
     }
   },
   async created() {
     try {
-      const res = await this.$http.get('/api/goods/home')
+      const res = await this.$http.get('/pccarousel?limit=19&page=1&sort=1')
       console.log(res)
+      let data = res.data;
+      if (data.code == 20000){
+        let items = data.data.items;
+        console.log(items)
+        this.homeList = items;
+        //获取轮播图数据
+        let item = items.find(item => item.type == 0);
+        console.log(item)
+
+        this.banner = items;
+        console.log(items)
+      }
     } catch (error) {
       console.log(error.message)
     }

@@ -670,7 +670,7 @@ header {
 .nav-sub {
   position: relative;
   z-index: 20;
-  height: 90px;
+  height: 70px;
   background: #f7f7f7;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
   &.fixed {
