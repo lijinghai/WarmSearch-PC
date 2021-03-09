@@ -136,7 +136,7 @@
               <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item :to="{path:'/goods'}">全部</el-breadcrumb-item>
-                <el-breadcrumb-item :to="{path:'/goods?cid=1184'}">品牌周边</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{path:'/goods?cid=1184'}">成功案例</el-breadcrumb-item>
                 <el-breadcrumb-item :to="{path:'/thanks'}">捐赠名单</el-breadcrumb-item>
 <!--                <el-breadcrumb-item :to="{path:'/8090'}">后台管理系统</el-breadcrumb-item>-->
               </el-breadcrumb>

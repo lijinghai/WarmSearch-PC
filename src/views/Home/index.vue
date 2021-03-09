@@ -11,13 +11,23 @@
       <el-carousel-item v-for="item in  banner" :key="item.id">
         <img v-if='item.url' :src="item.url" class="img1" alt />
       </el-carousel-item>
-<!--      <el-carousel-item v-for="item in 4" :key="item">-->
-<!--        <h3>{{item}}</h3>-->
-<!--      </el-carousel-item>-->
     </el-carousel>
   </div>
-  <div>
-    <div class="active-panel"></div>
+
+  <div v-for="item in PcCarouselList" :key="item.id">
+    <div class="activity-panel" v-if="item.type===1">
+      <!--最近丢失物品-->
+      <el-row>
+        <el-col class="content" :span="8" v-for="o in PcCarousel" :key="o.id" >
+          <el-card :body-style="{ padding: '0px' }">
+            <img :src="o.url" class="i">
+            <a href="#" class="cover-link"></a>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
+
+
     <!--物品title-->
     <section class="w mt30 clearfix"></section>
     <section class="w mt30 clearfix"></section>
@@ -32,32 +42,58 @@ export default {
     return {
       //存储轮播图
       banner: [],
-      homList: []
+      homList: [],
+      PcCarousel: [],
+      PcCarouselList: [],
     }
   },
-  async created() {
-    try {
-      const res = await this.$http.get('/pccarousel?limit=19&page=1&sort=1')
-      console.log(res)
-      let data = res.data;
-      if (data.code == 20000){
-        let items = data.data.items;
-        console.log(items)
-        this.homeList = items;
-        //获取轮播图数据
-        let item = items.find(item => item.type == 0);
-        console.log(item)
+  methods:{
+    async carousel() {
+      try {
+        const res = await this.$http.get('/pccarousel?limit=19&page=1&sort=1')
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.homeList = items;
+          //获取轮播图数据
+          let item = items.find(item => item.type == 0);
+          console.log(item)
 
-        this.banner = items;
-        console.log(items)
+          this.banner = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
       }
-    } catch (error) {
-      console.log(error.message)
+    },
+    async pcCarousel() {
+      try {
+        const res = await this.$http.get('/pcrecent?limit=4&page=1&sort=1')
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.PcCarouselList = items;
+          //获取最新物品信息数据
+          let item = items.find(item => item.type == 1);
+          console.log(item)
+          this.PcCarousel = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
     }
+  },
+  created() {
+    this.pcCarousel();
+    this.carousel();
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .home {
@@ -369,3 +405,4 @@ ul.box {
   }
 }
 </style>
+
