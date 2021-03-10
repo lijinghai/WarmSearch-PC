@@ -14,13 +14,13 @@
     </el-carousel>
   </div>
 
-  <div v-for="item in PcCarouselList" :key="item.id">
-    <div class="activity-panel" v-if="item.type===1">
+  <div >
+    <div class="activity-panel">
       <!--最近丢失物品-->
       <el-row>
-        <el-col class="content" :span="8" v-for="o in PcCarousel" :key="o.id" >
+        <el-col class="content" :span="8" v-for="item in PcCarouselList" :key="item.id">
           <el-card :body-style="{ padding: '0px' }">
-            <img :src="o.url" class="i">
+            <img :src="item.url" class="i">
             <a href="#" class="cover-link"></a>
           </el-card>
         </el-col>
@@ -182,6 +182,7 @@ export default {
     pointer-events: none;
   }
   .i {
+    display:inline-block;
     width: 305px;
     height: 200px;
   }
