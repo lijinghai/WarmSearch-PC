@@ -31,8 +31,9 @@
       <!--物品title-->
     <section class="w mt30 clearfix">
       <m-shelf title='急需'>
-        <div slot='content'>
-          <h2>111</h2>
+        <div slot='content' class="hot">
+          <!--第一模块，急需部分图片展示-->
+          <goods v-for='o in PcCarouselList' :key="o.id" :goods='o'></goods>
         </div>
       </m-shelf>
     </section>
@@ -50,7 +51,8 @@
 </template>
 
 <script>
-import MShelf from '@/components/Shelf.vue';
+import MShelf from '@/components/Shelf';
+import Goods from '@/components/Goods';
 //主要逻辑
 export default {
   data() {
@@ -64,7 +66,8 @@ export default {
     }
   },
   components: {
-    MShelf
+    MShelf,
+    Goods
   },
   methods:{
     async carousel() {
