@@ -28,15 +28,30 @@
     </div>
 
 
-    <!--物品title-->
-    <section class="w mt30 clearfix"></section>
-    <section class="w mt30 clearfix"></section>
+      <!--物品title-->
+    <section class="w mt30 clearfix">
+      <m-shelf title='急需'>
+        <div slot='content'>
+          <h2>111</h2>
+        </div>
+      </m-shelf>
+    </section>
+
+    <section class="w mt30 clearfix" v-for="item in  category" :key="item.id">
+      <m-shelf :title="item.ctitle">
+        <div slot='content'>
+          <h2>2222</h2>
+        </div>
+      </m-shelf>
+    </section>
   </div>
 
 </div>
 </template>
 
 <script>
+import MShelf from '@/components/Shelf.vue';
+//主要逻辑
 export default {
   data() {
     return {
@@ -45,7 +60,11 @@ export default {
       homList: [],
       PcCarousel: [],
       PcCarouselList: [],
+      category:[]
     }
+  },
+  components: {
+    MShelf
   },
   methods:{
     async carousel() {
@@ -86,11 +105,31 @@ export default {
       } catch (error) {
         console.log(error.message)
       }
+    },
+    async category1() {
+      try {
+        const res = await this.$http.get('/category/all?limit=19&page=1&sort=1')
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.category = items;
+          //获取最新物品信息数据
+          // let item = items.find(item => item.type == 1);
+          // console.log(item)
+          // this.category = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
     }
   },
   created() {
     this.pcCarousel();
     this.carousel();
+    this.category1();
   }
 }
 </script>
