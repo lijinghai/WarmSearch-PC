@@ -33,18 +33,32 @@
       <m-shelf title='急需'>
         <div slot='content' class="hot">
           <!--第一模块，急需部分图片展示-->
-          <goods v-for='o in PcCarouselList' :key="o.id" :goods='o'></goods>
+          <goods v-for='o in urgent' :key="o.id" :goods='o'></goods>
         </div>
       </m-shelf>
     </section>
 
-    <section class="w mt30 clearfix" v-for="item in  category" :key="item.id">
-      <m-shelf :title="item.ctitle">
-        <div slot='content'>
-          <h2>2222</h2>
+    <template v-for="(o,k) in  category" >
+    <section class="w mt30 clearfix"  :key="k">
+
+      <m-shelf :title="o.ctitle" :key="o.g_id" >
+        <!--内部内容-->
+        <div slot='content' class="floors">
+          <template v-for="(o,j) in pcGoodsdetail1">
+            <!--o.type===1 大图显示-->
+          <div class="imgbanner"
+               :key="j"
+               v-if="o.type===1 && o.g_id===1">
+            <img :src="o.url" alt="">
+          </div>
+          </template>
+          <template v-for="(o,i) in pcGoodsdetail1">
+          <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>
+          </template>
         </div>
       </m-shelf>
     </section>
+    </template>
   </div>
 
 </div>
@@ -62,7 +76,9 @@ export default {
       homList: [],
       PcCarousel: [],
       PcCarouselList: [],
-      category:[]
+      category:[],
+      urgent:[],
+      pcGoodsdetail1:[]
     }
   },
   components: {
@@ -127,12 +143,52 @@ export default {
       } catch (error) {
         console.log(error.message)
       }
+    },
+    async urgent1() {
+      try {
+        const res = await this.$http.get('/pcurgent?limit=2&page=1&sort=1')
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.urgent = items;
+          //获取最新物品信息数据
+          // let item = items.find(item => item.type == 1);
+          // console.log(item)
+          // this.category = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+    },
+    async pcGoodsdetail(g_id) {
+      try {
+        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id='+g_id)
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.pcGoodsdetail1 = items;
+          //获取最新物品信息数据
+          // let item = items.find(item => item.type == 1);
+          // console.log(item)
+          // this.category = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
     }
   },
   created() {
     this.pcCarousel();
     this.carousel();
     this.category1();
+    this.urgent1();
+    this.pcGoodsdetail();
   }
 }
 </script>
