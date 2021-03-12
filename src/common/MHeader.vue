@@ -202,7 +202,7 @@ header {
       background: url(/static/images/lost-logo.png) no-repeat 50%;
       background-size: cover;
       display: block;
-      @include wh(40px, 40px);
+      @include wh(51px, 63px);
       text-indent: -9999px;
       background-position: 0 0;
     }
