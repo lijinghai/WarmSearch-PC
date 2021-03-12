@@ -1,17 +1,17 @@
 <!--
- * @Description: 全部物品信息
+ * @Description: 待招领物品信息
  * @Author: lijinghailjh@163.com
- * @Date: 2021/3/7
+ * @Date: 2021/3/12
  -->
 <template>
 <div>
-  <h1>物品信息</h1>
+  招领
 </div>
 </template>
 
 <script>
 export default {
-  name: "index"
+name: "index"
 }
 </script>
 

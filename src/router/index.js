@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import Index from '@/views/Index'
 import Login from '@/views/Login'
 import Home from '@/views/Home'
-import Goods from '@/views/Goods'
+import Lost from '@/views/Lost'
+import Find from '@/views/Find'
 import Thanks from '@/views/Thanks'
 
 
@@ -21,8 +22,12 @@ const routes = [
         component: Home
       },
       {
-        path:"goods",
-        component: Goods
+        path:"lost",
+        component: Lost
+      },
+      {
+        path:"find",
+        component: Find
       },
       {
         path:"thanks",
