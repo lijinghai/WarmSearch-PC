@@ -17,7 +17,7 @@
         <div class="good-price pr">
           <div class="ds pa">
             <a href>
-              <el-button type="default" size="medium">查看详情</el-button>
+              <el-button type="default" size="medium" @click="goodsDetails(goods.goodsId)">查看详情</el-button>
             </a>
             <a href>
               <el-button type="primary" size="medium">认领</el-button>
@@ -35,7 +35,19 @@
 
 <script>
 export default {
-  props:['goods']
+  props:['goods'],
+  methods:{
+    goodsDetails(id) {
+      // 编程式导航
+      this.$router.push({
+        path: 'goodsDetail?goodsId='+id
+        // name: 'goodsDetail',
+        // query:{
+        //   goodsId:id
+        // }
+      });
+    }
+  }
 }
 </script>
 

@@ -6,6 +6,7 @@ import Home from '@/views/Home'
 import Lost from '@/views/Lost'
 import Find from '@/views/Find'
 import Thanks from '@/views/Thanks'
+import GoodsDetail from '@/views/GoodsDetail'
 
 
 Vue.use(VueRouter)
@@ -32,6 +33,11 @@ const routes = [
       {
         path:"thanks",
         component: Thanks
+      },
+      {
+        path:'goodsDetail',
+          name: 'goodsDetail',
+        component: GoodsDetail
       }
     ]
   },

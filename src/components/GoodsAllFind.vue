@@ -1,7 +1,7 @@
 <!--
  * @Description: 首页图片功能性性插件
  * @Author: lijinghailjh@163.com
- * @Date: 2021/3/11
+ * @Date: 2021/3/12
  -->
 <template>
   <el-row class="good-item">
@@ -12,15 +12,15 @@
             <img :src="goods.url" alt>
           </a>
         </div>
-        <h6 class="good-title">{{goods.goodsName}}</h6>
-        <h3 class="sub-title ellipsis">{{goods.goodsDetail}}</h3>
+        <h6 class="good-title">{{goods.goods_name}}</h6>
+        <h3 class="sub-title ellipsis">{{goods.goods_detail}}</h3>
         <div class="good-price pr">
           <div class="ds pa">
             <a href>
               <el-button type="default" size="medium" @click="goodsDetails(goods.goodsId)">查看详情</el-button>
             </a>
             <a href>
-              <el-button type="primary" size="medium">认领</el-button>
+              <el-button type="primary" size="medium">等待主人带我回家</el-button>
             </a>
           </div>
           <p>
@@ -123,3 +123,5 @@ h3 {
   border: none;
 }
 </style>
+
+
