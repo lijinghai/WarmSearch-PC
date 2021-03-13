@@ -5,7 +5,7 @@
  -->
 <template>
 <div>
-  <h1>Thanks</h1>
+    <img src="public/static/images/weixing.png" alt="">
 </div>
 </template>
 

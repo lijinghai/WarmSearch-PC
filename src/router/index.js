@@ -7,6 +7,8 @@ import Lost from '@/views/Lost'
 import Find from '@/views/Find'
 import Thanks from '@/views/Thanks'
 import GoodsDetail from '@/views/GoodsDetail'
+import GoodsDetailLost from '@/views/GoodsDetailLost'
+import GoodsDetailFind from '@/views/GoodsDetailFind'
 
 
 Vue.use(VueRouter)
@@ -38,6 +40,16 @@ const routes = [
         path:'goodsDetail',
         name: 'goodsDetail',
         component: GoodsDetail
+      },
+      {
+        path:'goodsDetailLost',
+        name: 'goodsDetailLost',
+        component: GoodsDetailLost
+      },
+      {
+        path:'goodsDetailFind',
+        name: 'goodsDetailFind',
+        component: GoodsDetailFind
       }
     ]
   },

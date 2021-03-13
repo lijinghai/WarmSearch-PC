@@ -1,7 +1,7 @@
 <!--
- * @Description: 急需部分详情信息
+ * @Description: 物品详情页
  * @Author: lijinghailjh@163.com
- * @Date: 2021/3/13
+ * @Date: 2021/3/12
  -->
 <template>
   <div class="w store-content">
@@ -58,13 +58,13 @@
 <script>
 export default {
   data() {
-    return {
+   return {
       product:{},
-      // //存小图
-      // small:[],
-      // //存大图
-      // big:''
-    };
+     // //存小图
+     // small:[],
+     // //存大图
+     // big:''
+   };
   },
   methods:{
     handleClick(url){
@@ -72,7 +72,7 @@ export default {
     },
     async getGoodsDetail() {
       try {
-        const res = await this.$http.get('/pcurgent/goodsid?limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
+        const res = await this.$http.get('/pcgoodsdetail/goodsid?id=1&limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
         console.log(res)
         this.product = res.data.data.items
         console.log(res.data.data.items)

@@ -1,5 +1,5 @@
 <!--
- * @Description: 急需部分详情信息
+ * @Description: 招领物品详情页
  * @Author: lijinghailjh@163.com
  * @Date: 2021/3/13
  -->
@@ -72,7 +72,7 @@ export default {
     },
     async getGoodsDetail() {
       try {
-        const res = await this.$http.get('/pcurgent/goodsid?limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
+        const res = await this.$http.get('/pcgoodsdetail/goodsid?id=2&limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
         console.log(res)
         this.product = res.data.data.items
         console.log(res.data.data.items)

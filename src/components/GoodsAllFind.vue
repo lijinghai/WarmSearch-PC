@@ -40,7 +40,7 @@ export default {
     goodsDetails(id) {
       // 编程式导航
       this.$router.push({
-        path: 'goodsDetail?goodsId='+id
+        path: 'goodsDetailFind?goodsId='+id
         // name: 'goodsDetail',
         // query:{
         //   goodsId:id
