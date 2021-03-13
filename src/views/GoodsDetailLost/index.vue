@@ -26,25 +26,25 @@
         </div>
       </div>
       <!--右边-->
-      <div class="banner">
+      <div class="banner" v-for="(item,i) in product" :key="i">
         <div class="sku-custom-title">
-          <h4>标题</h4>
+          <h4>{{item.goods_name}}</h4>
           <h6>
-            <span>子标题</span>
+            <span>{{item.goods_detail}}</span>
             <span class="price">
               <em></em>
-              <i>状态</i>
+              <i>{{item.status}}</i>
             </span>
           </h6>
         </div>
         <div class="num">
-          <span class="params-name">数量</span>
+          <span class="params-name">发布时间:{{item.create_time}}</span>
         </div>
         <div class="buy">
-          <el-button
-              type="primary"
-          >加入购物车</el-button>
-          <el-button type="danger">现在购买</el-button>
+          <!--          <el-button-->
+          <!--              type="primary"-->
+          <!--          >加入购物车</el-button>-->
+          <el-button type="danger">现在认领</el-button>
         </div>
       </div>
     </div>

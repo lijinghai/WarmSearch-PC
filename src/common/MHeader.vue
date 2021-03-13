@@ -119,7 +119,7 @@
                       </div>
                     </div>
                     <div style="height: 313px;text-align: center" class="cart-con" v-if='!totalNum'>
-                      <p>您的购物车竟然是空的!</p>
+                      <p>不是吧，居然没有你要的东西？？？</p>
                     </div>
                   </div>
                 </div>
@@ -149,10 +149,24 @@
 </template>
 
 <script>
+import{ mapState,mapMutations } from "vuex";
 export default {
   data() {
     return {
-      productInfo: ''
+      productInfo: '',
+
+    };
+  },
+  computed:{
+    ...mapState(['login','userInfo','carList','showCart'])
+  },
+  methods:{
+    ...mapMutations(['SHOWCART']),
+    cartShowState(state) {
+      console.log(state);
+      this.SHOWCART({
+        showCart: state
+      })
     }
   },
   created() {
