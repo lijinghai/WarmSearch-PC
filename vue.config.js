@@ -2,10 +2,10 @@ const port = 8093; // dev port
 module.exports = {
     devServer: {
         port,
-        // eslint-disable-next-line no-unused-vars
-        before(app, serve) {
-
-        }
+        // // eslint-disable-next-line no-unused-vars
+        // before(app, serve) {
+        //
+        // }
     }
 }
 

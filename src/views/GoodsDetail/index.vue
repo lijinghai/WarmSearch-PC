@@ -1,5 +1,5 @@
 <!--
- * @Description:
+ * @Description: 物品详情页
  * @Author: lijinghailjh@163.com
  * @Date: 2021/3/12
  -->
@@ -54,7 +54,34 @@
 
 <script>
 export default {
-name: "GoodsDetail"
+  data() {
+   return {
+
+   };
+  },
+  methods:{
+    async getGoodsDetail() {
+      try {
+        const res = await this.$http.get('/pcgoodsdetail/allkinds?id=2&limit='+this.pageSize+'&page='+this.currentPage+'&sort='+this.sort)
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.homeList = items;
+          this.allGoods = items;
+          console.log(items)
+          this.total = res.data.data.total
+          console.log(res.data.data.total)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+  },
+  create() {
+    this.getGoodsDetail();
+  },
 }
 </script>
 
