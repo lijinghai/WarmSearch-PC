@@ -9,6 +9,7 @@ import Thanks from '@/views/Thanks'
 import GoodsDetail from '@/views/GoodsDetail'
 import GoodsDetailLost from '@/views/GoodsDetailLost'
 import GoodsDetailFind from '@/views/GoodsDetailFind'
+import User from '@/views/User'
 
 
 Vue.use(VueRouter)
@@ -57,6 +58,15 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component:User,
+    meta:{
+      //证明我现在需要守卫
+      auth:true
+    }
   }
 ]
 
