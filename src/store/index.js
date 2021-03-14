@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
+import {setStore} from '@/utils/storage'
 
 export default new Vuex.Store({
   state: {
@@ -17,6 +18,11 @@ export default new Vuex.Store({
     SHOWCART(state, { showCart }) {
       state.showCart = showCart;
     },
+    ISLOGIN(state,info) {
+      state.userInfo = info;
+      state.login = true;
+      setStore('userInfo',info);
+    }
   },
   actions: {
   },
