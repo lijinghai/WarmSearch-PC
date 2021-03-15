@@ -32,7 +32,8 @@
                       <li class="nav-user-avatar">
                         <div>
 <!--                          <span class="avatar">-->
-                            <img src="public/static/images/lost.jpg" alt="">
+                            <el-avatar class="avatar" icon="el-icon-user-solid">
+                            </el-avatar>
 <!--                          </span>-->
                         </div>
                         <p class="name">{{userInfo.data.username}}</p>
@@ -161,6 +162,15 @@ export default {
   },
   computed:{
     ...mapState(['login','userInfo','carList','showCart']),
+    totalNum() {
+      return (
+          this.cartList &&
+          this.cartList.reduce((total, item) => {
+            total += item.productNum;
+            return total;
+          }, 0)
+      );
+    },
   },
   methods: {
     ...mapMutations(["SHOWCART"]),

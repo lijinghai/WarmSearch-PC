@@ -19,8 +19,12 @@
             <a href>
               <el-button type="default" size="medium" @click="goodsDetails(goods.goodsId)">查看详情</el-button>
             </a>
-            <a href>
-              <el-button type="primary" size="medium">认领</el-button>
+            <a href="javascript:;">
+              <el-button
+                  type="primary"
+                  size="medium"
+                  @click="addCart(goods.panelId,goods.createTime,goods.goodsName,goods.url)"
+              >加入购物车</el-button>
             </a>
           </div>
           <p>
@@ -34,8 +38,13 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import { getStore } from '@/utils/storage'
 export default {
   props:['goods'],
+  computed: {
+    ...mapState(['login'])
+  },
   methods:{
     goodsDetails(id) {
       // 编程式导航
@@ -46,6 +55,22 @@ export default {
         //   goodsId:id
         // }
       });
+    },
+    addCart(id) {
+      if(this.login) {
+        //用户以登录
+        this.$http.post('/api/addCart',{
+          username: getStore('username'),
+          panelId:id,
+          productNum: 1
+        });
+        //已经存储成功,讲当前的物品存储到store的carList中
+
+
+      }else {
+        //如果用户未登录可以讲物品存储到carlist
+
+      }
     }
   }
 }
