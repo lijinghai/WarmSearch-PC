@@ -18,11 +18,11 @@ export default new Vuex.Store({
     SHOWCART(state, { showCart }) {
       state.showCart = showCart;
     },
-    ISLOGIN(state,info) {
+    ISLOGIN(state, info) {
       state.userInfo = info;
       state.login = true;
-      setStore('userInfo',info);
-    }
+      setStore('userInfo', info);
+    },
   },
   actions: {
   },

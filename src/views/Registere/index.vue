@@ -1,12 +1,12 @@
 <!--
- * @Description: 登录页面
+ * @Description: 注册信息
  * @Author: lijinghailjh@163.com
- * @Date: 2021/3/7
+ * @Date: 2021/3/15
  -->
 <template>
   <div class="login">
     <div class="box">
-      <span>使用账号 登录官网</span>
+      <span>欢迎加入我们</span>
       <el-form
           :model="ruleForm"
           status-icon
@@ -23,17 +23,16 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-            <el-button @click="returnhome">返回</el-button>
+          <el-button @click="returnhome">返回</el-button>
         </el-form-item>
       </el-form>
-      <a href="/registere" style="padding-left:312px">新用户注册</a>
 
     </div>
   </div>
 </template>
 
 <script>
-import { setStore } from '@/utils/storage'
+// import { setStore } from '@/utils/storage'
 export default {
   data() {
     let validateUser = (rule,value,callback) => {
@@ -70,18 +69,22 @@ export default {
         if (valid) {
           //   获取用户名和密码
           // let {user,pass} = this.ruleForm;
-          let res = await this.$http.post('/pcuser/login',this.ruleForm);
+          let res = await this.$http.post('/pcuser/add',this.ruleForm);
           console.log(res);
-          if (res.data.code === 20000) {
-            let { username, token } = res.data.data;
+          this.$router.push({
+            name: "home"
+          })
 
-            this.$router.push({
-              name: "home"
-            })
+          // if (res.data.code === 20000) {
+          //   let { username, token } = res.data.data;
+          //
+          //   this.$router.push({
+          //     name: "home"
+          //   })
 
             //  持久化 存储
-            setStore("token", token);
-            setStore("username", username);
+            // setStore("token", token);
+            // setStore("username", username);
             // console.log(this.cart);
 
             // if (this.cart && this.cart.length) {
@@ -96,8 +99,9 @@ export default {
             // } else {
             //   this.$router.push({path: "/"});
             // }
-          }
-        } else {
+          // }
+        }
+        else {
           console.log("error submit!!");
           return false;
         }
@@ -136,3 +140,4 @@ export default {
   }
 }
 </style>
+

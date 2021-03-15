@@ -10,6 +10,7 @@ import GoodsDetail from '@/views/GoodsDetail'
 import GoodsDetailLost from '@/views/GoodsDetailLost'
 import GoodsDetailFind from '@/views/GoodsDetailFind'
 import User from '@/views/User'
+import Registere from '@/views/Registere'
 
 
 Vue.use(VueRouter)
@@ -58,6 +59,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/registere',
+    name: 'registere',
+    component: Registere
   },
   {
     path: '/user',

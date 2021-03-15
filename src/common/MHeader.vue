@@ -31,25 +31,27 @@
                       <!-- 头像 -->
                       <li class="nav-user-avatar">
                         <div>
-                          <span class="avatar" :style="{backgroundImage:'url('+userInfo.file+')'}"></span>
+<!--                          <span class="avatar">-->
+                            <img src="public/static/images/lost.jpg" alt="">
+<!--                          </span>-->
                         </div>
-                        <p class="name">{{userInfo.username}}</p>
+                        <p class="name">{{userInfo.data.username}}</p>
                       </li>
-                      <li>
-                        <router-link to="/user/orderList">我的订单</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/user/information">账号资料</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/user/addressList">收货地址</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/user/support">售后服务</router-link>
-                      </li>
-                      <li>
-                        <router-link to="/user/coupon">我的优惠</router-link>
-                      </li>
+<!--                      <li>-->
+<!--                        <router-link to="/user/orderList">我的订单</router-link>-->
+<!--                      </li>-->
+<!--                      <li>-->
+<!--                        <router-link to="/user/information">账号资料</router-link>-->
+<!--                      </li>-->
+<!--                      <li>-->
+<!--                        <router-link to="/user/addressList">收货地址</router-link>-->
+<!--                      </li>-->
+<!--                      <li>-->
+<!--                        <router-link to="/user/support">售后服务</router-link>-->
+<!--                      </li>-->
+<!--                      <li>-->
+<!--                        <router-link to="/user/coupon">我的优惠</router-link>-->
+<!--                      </li>-->
                       <li>
                         <a href="javascript:;" @click="logout">退出</a>
                       </li>
@@ -149,24 +151,29 @@
 </template>
 
 <script>
-import{ mapState,mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
+import { removeStore} from '@/utils/storage';
 export default {
   data() {
     return {
       productInfo: '',
-
     };
   },
   computed:{
-    ...mapState(['login','userInfo','carList','showCart'])
+    ...mapState(['login','userInfo','carList','showCart']),
   },
-  methods:{
-    ...mapMutations(['SHOWCART']),
+  methods: {
+    ...mapMutations(["SHOWCART"]),
     cartShowState(state) {
       console.log(state);
       this.SHOWCART({
         showCart: state
-      })
+      });
+    },
+    logout() {
+      removeStore("token");
+      // removeStore("buyCart");
+      window.location.href = "/";
     }
   },
   created() {
@@ -371,6 +378,7 @@ header {
           @include wh(100%);
           background-repeat: no-repeat;
           background-size: contain;
+          background-url:url(/static/images/tuxiang.jpg)
         }
       }
       .name {
