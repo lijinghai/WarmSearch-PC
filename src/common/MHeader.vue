@@ -32,8 +32,7 @@
                       <li class="nav-user-avatar">
                         <div>
 <!--                          <span class="avatar">-->
-                            <el-avatar class="avatar" icon="el-icon-user-solid">
-                            </el-avatar>
+                          <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
 <!--                          </span>-->
                         </div>
                         <p class="name">{{userInfo.data.username}}</p>
