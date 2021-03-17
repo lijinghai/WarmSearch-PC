@@ -44,7 +44,7 @@
 <!--          <el-button-->
 <!--              type="primary"-->
 <!--          >加入购物车</el-button>-->
-          <el-button type="danger">现在认领</el-button>
+          <el-button type="danger" :plain="true" @click="open">现在认领</el-button>
         </div>
       </div>
     </div>
@@ -67,12 +67,36 @@ export default {
     };
   },
   methods:{
+    open() {
+      this.$confirm('请您仔细查看已确保是您的宝贝', '小主您好：', {
+        distinguishCancelAndClose: true,
+        confirmButtonText: '马上带回去',
+        cancelButtonText: '看错了'
+      })
+          .then(() => {
+            this.$message({
+              type: 'info',
+              message: '很高兴我的平台可以帮到您'
+            });
+          })
+          .catch(action => {
+            this.$message({
+              type: 'info',
+              message: action === 'cancel'
+                  ? '别着急，再看看肯定有您的东西'
+                  : '您还在犹豫吗？'
+            })
+          });
+    },
+
+
     handleClick(url){
       this.item.url1 = url;
     },
     async getGoodsDetail() {
       try {
-        const res = await this.$http.get('/pcurgent/goodsid?limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
+        const res = await this.$http.get('/pcgoodsdetail/goodsid?id=1&limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
+        // const res = await this.$http.get('/pcurgent/goodsid?limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
         console.log(res)
         this.product = res.data.data.items
         console.log(res.data.data.items)
