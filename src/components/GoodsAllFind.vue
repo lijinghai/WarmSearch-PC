@@ -19,8 +19,10 @@
             <a href>
               <el-button type="default" size="medium" @click="goodsDetails(goods.goodsId)">查看详情</el-button>
             </a>
-            <a href>
-              <el-button type="primary" size="medium">等待主人带我回家</el-button>
+            <a href="javascript:;">
+              <el-button type="primary"
+                         size="medium"
+                         :plain="true" @click="open" >等待主人带我回家</el-button>
             </a>
           </div>
           <p>
@@ -37,6 +39,28 @@
 export default {
   props:['goods'],
   methods:{
+    open() {
+      this.$confirm('如果不确定是否是您的物品，您可以点击查看详情', '小主您好：', {
+        distinguishCancelAndClose: true,
+        confirmButtonText: '马上带回去',
+        cancelButtonText: '看错了'
+      })
+          .then(() => {
+            this.$message({
+              type: 'info',
+              message: '很高兴我的平台可以帮到您'
+            });
+          })
+          .catch(action => {
+            this.$message({
+              type: 'info',
+              message: action === 'cancel'
+                  ? '别着急，再看看肯定有您的东西'
+                  : '您还在犹豫吗？'
+            })
+          });
+    },
+
     goodsDetails(id) {
       // 编程式导航
       this.$router.push({
