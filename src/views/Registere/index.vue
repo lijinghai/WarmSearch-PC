@@ -22,7 +22,7 @@
           <el-input type="password" v-model="ruleForm.password" autocomplete="off" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
           <el-button @click="returnhome">返回</el-button>
         </el-form-item>
       </el-form>

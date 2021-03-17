@@ -24,8 +24,8 @@
                   type="primary"
                   size="medium"
                   :plain="true" @click="open">
-<!--                  @click="addCart(goods.panelId,goods.createTime,goods.goodsName,goods.url)"-->
-              现在认领</el-button>
+                <!--                  @click="addCart(goods.panelId,goods.createTime,goods.goodsName,goods.url)"-->
+                现在认领</el-button>
             </a>
           </div>
           <p>
@@ -72,7 +72,7 @@ export default {
     goodsDetails(id) {
       // 编程式导航
       this.$router.push({
-        path: 'goodsDetail?goodsId='+id
+        path: 'goodsDetailUrgent?goodsId='+id
         // name: 'goodsDetail',
         // query:{
         //   goodsId:id

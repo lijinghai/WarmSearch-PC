@@ -7,6 +7,7 @@ import Lost from '@/views/Lost'
 import Find from '@/views/Find'
 import Thanks from '@/views/Thanks'
 import GoodsDetail from '@/views/GoodsDetail'
+import GoodsDetailUrgent from '@/views/GoodsDetailUrgent'
 import GoodsDetailLost from '@/views/GoodsDetailLost'
 import GoodsDetailFind from '@/views/GoodsDetailFind'
 import User from '@/views/User'
@@ -42,6 +43,11 @@ const routes = [
         path:'goodsDetail',
         name: 'goodsDetail',
         component: GoodsDetail
+      },
+      {
+        path:'goodsDetailUrgent',
+        name: 'goodsDetailUrgent',
+        component: GoodsDetailUrgent
       },
       {
         path:'goodsDetailLost',

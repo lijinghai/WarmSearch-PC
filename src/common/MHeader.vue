@@ -17,7 +17,7 @@
                   minlength="1"
                   maxlength="100"
               ></el-input>
-              <router-link to="/goods">全部物品</router-link>
+              <router-link to="/Lost">全部物品</router-link>
               <router-link to="/thanks">捐赠</router-link>
             </div>
 

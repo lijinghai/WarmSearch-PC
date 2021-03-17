@@ -33,7 +33,7 @@
       <m-shelf title='急需'>
         <div slot='content' class="hot">
           <!--第一模块，急需部分图片展示-->
-          <goods v-for='o in urgent' :key="o.id" :goods='o'></goods>
+          <goods-urgent v-for='o in urgent' :key="o.id" :goods='o'></goods-urgent>
         </div>
       </m-shelf>
     </section>
@@ -133,6 +133,7 @@
 <script>
 import MShelf from '@/components/Shelf';
 import Goods from '@/components/Goods';
+import GoodsUrgent  from "@/components/GoodsUrgent";
 //主要逻辑
 export default {
   data() {
@@ -152,7 +153,8 @@ export default {
   },
   components: {
     MShelf,
-    Goods
+    Goods,
+    GoodsUrgent
   },
   methods:{
     async carousel() {
