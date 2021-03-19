@@ -45,6 +45,8 @@
           <!--              type="primary"-->
           <!--          >加入购物车</el-button>-->
           <el-button type="danger" :plain="true" @click="open">现在认领</el-button>
+          <span class="params-name">现在正在认领的人是:{{userInfo.data.username}}</span>
+
         </div>
       </div>
     </div>
@@ -56,16 +58,23 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   data() {
     return {
       product:{},
+      productInfo: ''
       // //存小图
       // small:[],
       // //存大图
       // big:''
     };
   },
+  computed: {
+    ...mapState(['login', 'userInfo', 'carList', 'showCart']),
+  },
+
   methods:{
     open() {
       this.$confirm('请您仔细查看已确保是您的宝贝', '小主您好：', {
@@ -199,7 +208,7 @@ export default {
       position: relative;
     }
     .params-name {
-      padding-right: 20px;
+      padding-right: 90px;
       font-size: 14px;
       color: #8d8d8d;
       line-height: 36px;
