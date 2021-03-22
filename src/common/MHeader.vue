@@ -203,8 +203,14 @@ export default {
   //background: $head-bgc;
   //background-image: -webkit-linear-gradient(#000, #121212);
   //background-image: linear-gradient(#000, #121212);
-  background-color: #FBAB7E;
-  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
+  //background-color: #FBAB7E;
+  //background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+
 
 
 
@@ -229,7 +235,7 @@ header {
     display: flex;
     align-items: center;
     > a {
-      background: url(/static/images/lost-logo.png) no-repeat 50%;
+      background: url(/static/images/lost1.png) no-repeat 50%;
       background-size: cover;
       display: block;
       @include wh(51px, 63px);
