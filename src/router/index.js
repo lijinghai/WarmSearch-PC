@@ -14,6 +14,7 @@ import User from '@/views/User'
 import Registere from '@/views/Registere'
 
 
+
 Vue.use(VueRouter)
 
 const routes = [

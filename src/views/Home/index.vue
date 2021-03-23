@@ -7,7 +7,7 @@
 <div class="home">
   <!--轮播图-->
   <div class="banner">
-    <el-carousel indicator-position="outside" height="480px">
+    <el-carousel indicator-position="outside" height="434px">
       <el-carousel-item v-for="item in  banner" :key="item.id">
         <img v-if='item.url' :src="item.url" class="img1" alt />
       </el-carousel-item>
@@ -154,7 +154,7 @@ export default {
   components: {
     MShelf,
     Goods,
-    GoodsUrgent
+    GoodsUrgent,
   },
   methods:{
     async carousel() {
@@ -454,7 +454,7 @@ export default {
   z-index: 19;
   margin: 0 auto 40px;
   width: 1220px;
-  height: 473px;
+  height: 409px;
 }
 
 .bg {
