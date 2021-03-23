@@ -10,6 +10,7 @@
           </div>
           <div class="right-box">
             <div class="nav-list">
+              <p style="width:443px;height:31px;font-size:24px;">暖寻(校园失物招领)</p>
               <el-input
                   placeholder="请输入物品信息"
                   suffix-icon="el-icon-search"
@@ -67,7 +68,8 @@
                 @mouseleave="cartShowState(false)"
               >
                 <router-link to="/cart"></router-link>
-                <span class="cart-num">
+                <!--小红点-->
+                <span class="cart-num" >
                   <i class="num" :class="{no:totalNum == 0}">{{totalNum}}</i>
                 </span>
 
@@ -107,8 +109,9 @@
                       <!-- 总件数 -->
                       <div class="nav-cart-total">
                         <p>
-                          共
-                          <strong>{{totalNum}}</strong> 件商品
+<!--                          共-->
+<!--                          <strong>{{totalNum}}</strong> 件商品-->
+                          {{userInfo.data.username}}用户您好：
                         </p>
                         <h5>
                           合计：
@@ -135,12 +138,14 @@
           <div class="nav-sub-bg"></div>
           <div class="nav-sub-wrapper">
             <div class="w">
-              <el-breadcrumb separator-class="el-icon-arrow-right">
+<!--              <el-breadcrumb separator-class="el-icon-arrow-right">-->
+              <el-breadcrumb separator-class="el-icon-s-promotion">
+                <el-breadcrumb-item></el-breadcrumb-item>
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item :to="{path:'/Lost'}">失物</el-breadcrumb-item>
                 <el-breadcrumb-item :to="{path:'/find'}">待招领</el-breadcrumb-item>
-                <el-breadcrumb-item :to="{path:'/thanks'}">捐赠名单</el-breadcrumb-item>
-<!--                <el-breadcrumb-item :to="{path:'/8090'}">后台管理系统</el-breadcrumb-item>-->
+                <el-breadcrumb-item :to="{path:'/thanks'}">捐赠</el-breadcrumb-item>
+                <el-breadcrumb-item></el-breadcrumb-item>
               </el-breadcrumb>
             </div>
           </div>
@@ -149,6 +154,9 @@
     </div>
   </div>
 </template>
+
+
+
 
 <script>
 import { mapState, mapMutations } from "vuex";
@@ -195,7 +203,7 @@ export default {
 @import "../assets/style/theme";
 @import "../assets/style/mixin";
 
-.w-box .nav-list .el-input {
+.w-box .nav-list .el-input .p {
   margin-right: 10px;
 }
 .header-box {
@@ -447,10 +455,9 @@ header {
         display: block;
         @include wh(30px, 100%);
         content: " ";
-        background: url(/static/images/account-icon@2x.32d87deb02b3d1c3cc5bcff0c26314ac.png)
-          0 -22px;
         background-size: 240px 107px;
-        background-position: -150px -22px;
+        background: url(/static/images/account-icon@2x.32d87deb02b3d1c3cc5bcff0c26314ac.png) -150px -22px;
+        //background: url(/static/images/gaoshi.png) -150px -22px;
       }
     }
     .cart-num {
@@ -462,11 +469,11 @@ header {
       text-indent: 0;
       line-height: 20px;
       > i {
-        background: #eb746b;
-        background-image: -webkit-linear-gradient(#eb746b, #e25147);
-        background-image: linear-gradient(#eb746b, #e25147);
-        box-shadow: inset 0 0 1px hsla(0, 0%, 100%, 0.15),
-          0 1px 2px hsla(0, 0%, 100%, 0.15);
+        //background: #eb746b;
+        //background-image: -webkit-linear-gradient(#eb746b, #e25147);
+        //background-image: linear-gradient(#eb746b, #e25147);
+        //box-shadow: inset 0 0 1px hsla(0, 0%, 100%, 0.15),
+        //  0 1px 2px hsla(0, 0%, 100%, 0.15);
         text-align: center;
         font-style: normal;
         display: inline-block;
@@ -629,7 +636,7 @@ header {
         margin-bottom: 4px;
         line-height: 16px;
         font-size: 12px;
-        color: #c1c1c1;
+        color: #0f44c7;
       }
       h5 {
         line-height: 20px;
