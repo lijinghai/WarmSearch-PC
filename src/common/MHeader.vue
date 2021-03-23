@@ -111,7 +111,7 @@
                         <p>
 <!--                          共-->
 <!--                          <strong>{{totalNum}}</strong> 件商品-->
-                          {{userInfo.data.username}}用户您好：
+<!--                          {{userInfo.data.username}}用户您好：-->
                         </p>
                         <h5>
                           合计：
@@ -246,7 +246,7 @@ header {
       background: url(/static/images/lost1.png) no-repeat 50%;
       background-size: cover;
       display: block;
-      @include wh(51px, 63px);
+      @include wh(58px, 63px);
       text-indent: -9999px;
       background-position: 0 0;
     }
@@ -262,7 +262,7 @@ header {
     a {
       width: 110px;
       //顶部导航栏字体颜色
-      color: #3c87f8;
+      color: #010513;
       display: block;
       font-size: 14px;
       padding: 0 25px;
@@ -714,7 +714,7 @@ header {
 .nav-sub {
   position: relative;
   z-index: 20;
-  height: 70px;
+  height: 60px;
   background: #f7f7f7;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
   &.fixed {
@@ -729,7 +729,7 @@ header {
     background-image: linear-gradient(#fff, #f1f1f1);
   }
   .nav-sub-wrapper {
-    padding: 31px 0;
+    padding: 24px 0;
     height: 90px;
     position: relative;
     &.fixed {

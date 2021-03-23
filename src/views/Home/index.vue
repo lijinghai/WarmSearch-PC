@@ -454,6 +454,7 @@ export default {
   z-index: 19;
   margin: 0 auto 40px;
   width: 1220px;
+  height: 473px;
 }
 
 .bg {
