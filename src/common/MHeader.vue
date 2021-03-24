@@ -106,9 +106,11 @@
                           </li>
                         </ul>
                       </div>
+
+
                       <!-- 总件数 -->
                       <div class="nav-cart-total">
-                        <p>
+                        <p class="a">
 <!--                          共-->
 <!--                          <strong>{{totalNum}}</strong> 件商品-->
 <!--                          {{userInfo.data.username}}用户您好：-->
@@ -116,14 +118,30 @@
                         <h5>
                           合计：
                           <span class="price-icon">¥</span>
-                          <span class="price-num">{{totalPrice}}</span>
+                          <span class="price-num">111</span>
                         </h5>
                         <h6>
-                          <el-button type="danger">去购物车</el-button>
+<!--                          <el-button type="danger">去购物车</el-button>-->
+
+                          <div>
+                            <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
+                              点我打开
+                            </el-button>
+
+                            <el-drawer
+                                title="我是标题"
+                                :visible.sync="drawer"
+                                :with-header="false">
+                              <span>我来啦!</span>
+                            </el-drawer>
+
+                          </div>
+
                         </h6>
                       </div>
                     </div>
-                    <div style="height: 313px;text-align: center" class="cart-con" v-if='!totalNum'>
+<!--                    <div style="height: 313px;text-align: center" class="cart-con" v-if='!totalNum'>-->
+                    <div style="height: 313px;text-align: center" class="cart-con">
                       <p>不是吧，居然没有你要的东西？？？</p>
                     </div>
                   </div>
@@ -142,8 +160,8 @@
               <el-breadcrumb separator-class="el-icon-s-promotion">
                 <el-breadcrumb-item></el-breadcrumb-item>
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item :to="{path:'/Lost'}">失物</el-breadcrumb-item>
-                <el-breadcrumb-item :to="{path:'/find'}">待招领</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{path:'/Lost'}">寻失物</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{path:'/find'}">寻失主</el-breadcrumb-item>
                 <el-breadcrumb-item :to="{path:'/thanks'}">捐赠</el-breadcrumb-item>
                 <el-breadcrumb-item></el-breadcrumb-item>
               </el-breadcrumb>
@@ -166,6 +184,7 @@ export default {
   data() {
     return {
       productInfo: '',
+      drawer: false,
     };
   },
   computed:{
