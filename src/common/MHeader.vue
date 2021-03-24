@@ -67,45 +67,45 @@
                 @mouseenter="cartShowState(true)"
                 @mouseleave="cartShowState(false)"
               >
-                <router-link to="/cart"></router-link>
+                <router-link to="/"></router-link>
                 <!--小红点-->
                 <span class="cart-num" >
-                  <i class="num" :class="{no:totalNum == 0}">{{totalNum}}</i>
+                  <i class="num" ></i>
                 </span>
 
                 <!-- 购物车显示 -->
                 <div class="nav-user-wrapper pa active" v-show="showCart">
                   <div class="nav-user-list">
                     <div class="full">
-                      <div class="nav-cart-items">
-                        <ul>
-                          <li class="clearfix" v-for="(goods,index) in cartList" :key="index">
-                            <div class="cart-item">
-                              <div class="cart-item-inner">
-                                <a>
-                                  <div class="item-thumb">
-                                    <img :src="goods.productImageBig">
-                                  </div>
-                                  <div class="item-desc">
-                                    <div class="cart-cell">
-                                      <h4>
-                                        <a href>{{goods.productName}}</a>
-                                      </h4>
-                                      <!-- <p class="attrs"><span>白色</span></p> -->
-                                      <h6>
-                                        <span class="price-icon">¥</span>
-                                        <span class="price-num">{{goods.salePrice}}</span>
-                                        <span class="item-num">x {{goods.productNum}}</span>
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </a>
-                                <div class="del-btn del">删除</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+<!--                      <div class="nav-cart-items">-->
+<!--                        <ul>-->
+<!--                          <li class="clearfix" v-for="(goods,index) in cartList" :key="index">-->
+<!--                            <div class="cart-item">-->
+<!--                              <div class="cart-item-inner">-->
+<!--                                <a>-->
+<!--                                  <div class="item-thumb">-->
+<!--                                    <img :src="goods.productImageBig">-->
+<!--                                  </div>-->
+<!--                                  <div class="item-desc">-->
+<!--                                    <div class="cart-cell">-->
+<!--                                      <h4>-->
+<!--                                        <a href>{{goods.productName}}</a>-->
+<!--                                      </h4>-->
+<!--                                      &lt;!&ndash; <p class="attrs"><span>白色</span></p> &ndash;&gt;-->
+<!--                                      <h6>-->
+<!--                                        <span class="price-icon">¥</span>-->
+<!--                                        <span class="price-num">{{goods.salePrice}}</span>-->
+<!--                                        <span class="item-num">x {{goods.productNum}}</span>-->
+<!--                                      </h6>-->
+<!--                                    </div>-->
+<!--                                  </div>-->
+<!--                                </a>-->
+<!--                                <div class="del-btn del">删除</div>-->
+<!--                              </div>-->
+<!--                            </div>-->
+<!--                          </li>-->
+<!--                        </ul>-->
+<!--                      </div>-->
 
 
                       <!-- 总件数 -->
@@ -122,27 +122,28 @@
                         </h5>
                         <h6>
 <!--                          <el-button type="danger">去购物车</el-button>-->
-
-                          <div>
-                            <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
-                              点我打开
-                            </el-button>
-
-                            <el-drawer
-                                title="我是标题"
-                                :visible.sync="drawer"
-                                :with-header="false">
-                              <span>我来啦!</span>
-                            </el-drawer>
-
-                          </div>
+                          <template>
+                            <div>
+                              <el-button
+                                  plain
+                                  type="primary"
+                                  @click="open">
+                                使用
+                              </el-button>
+                            </div>
+                          </template>
 
                         </h6>
                       </div>
                     </div>
 <!--                    <div style="height: 313px;text-align: center" class="cart-con" v-if='!totalNum'>-->
                     <div style="height: 313px;text-align: center" class="cart-con">
-                      <p>不是吧，居然没有你要的东西？？？</p>
+                      <p>不是吧，居然没有你要的东西？？？
+                        <el-rate
+                            v-model="value"
+                            show-text>
+                        </el-rate>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -184,23 +185,22 @@ export default {
   data() {
     return {
       productInfo: '',
-      drawer: false,
+      value: null
     };
   },
   computed:{
-    ...mapState(['login','userInfo','carList','showCart']),
-    totalNum() {
-      return (
-          this.cartList &&
-          this.cartList.reduce((total, item) => {
-            total += item.productNum;
-            return total;
-          }, 0)
-      );
-    },
+    ...mapState(['login','userInfo','showCart']),
+
   },
   methods: {
     ...mapMutations(["SHOWCART"]),
+    open() {
+      this.$notify({
+        title: 'HTML 片段',
+        dangerouslyUseHTMLString: true,
+        message: '<strong>这是 <i>HTML</i> 片段</strong>'
+      });
+    },
     cartShowState(state) {
       console.log(state);
       this.SHOWCART({
