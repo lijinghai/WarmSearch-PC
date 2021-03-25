@@ -235,8 +235,12 @@ export default {
   //background-color: #FBAB7E;
   //background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
 
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  background-color: #8EC5FC;
+  background-image: linear-gradient(270deg, #8EC5FC 0%, #f0edf2 100%);
+
+
+
+
 
 
 
