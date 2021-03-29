@@ -116,9 +116,9 @@
 <!--                          {{userInfo.data.username}}用户您好：-->
                         </p>
                         <h5>
-                          合计：
-                          <span class="price-icon">¥</span>
-                          <span class="price-num">111</span>
+                          亲爱的网站体验者您好：
+<!--                          <span class="price-icon">¥</span>-->
+<!--                          <span class="price-num">111</span>-->
                         </h5>
                         <h6>
 <!--                          <el-button type="danger">去购物车</el-button>-->
@@ -128,7 +128,7 @@
                                   plain
                                   type="primary"
                                   @click="open">
-                                使用
+                                加入我们
                               </el-button>
                             </div>
                           </template>
@@ -137,13 +137,21 @@
                       </div>
                     </div>
 <!--                    <div style="height: 313px;text-align: center" class="cart-con" v-if='!totalNum'>-->
+<!--                    不是吧，居然没有你要的东西？？？-->
                     <div style="height: 313px;text-align: center" class="cart-con">
-                      <p>不是吧，居然没有你要的东西？？？
+                      <p>本网站目前仍在不断完善中，可能部分功能不太完善，凭我艺人之力，不太可能将本网站做的完美；
+                        所有，我恳请有更多的志同道合的人来加入我们，一起来完善我的项目
+
+                      <span>
+
                         <el-rate
                             v-model="value"
                             show-text>
                         </el-rate>
+                      </span>
+
                       </p>
+
                     </div>
                   </div>
                 </div>
@@ -196,9 +204,9 @@ export default {
     ...mapMutations(["SHOWCART"]),
     open() {
       this.$notify({
-        title: 'HTML 片段',
+        title: '来着站长的一句话',
         dangerouslyUseHTMLString: true,
-        message: '<strong>这是 <i>HTML</i> 片段</strong>'
+        message: '<strong>同舟共济扬帆起，乘风破浪万里航</strong>'
       });
     },
     cartShowState(state) {
@@ -832,21 +840,21 @@ header {
   text-align: center;
   position: relative;
   p {
-    padding-top: 185px;
+    padding-top: 100px;
     color: #333333;
     font-size: 16px;
   }
 }
 
-.cart-con:before {
-  position: absolute;
-  content: " ";
-  left: 50%;
-  transform: translate(-50%, -70%);
-  top: 50%;
-  width: 76px;
-  height: 62px;
-  background: url("/static/images/cart-empty-new.png") no-repeat;
-  background-size: cover;
-}
+//.cart-con:before {
+//  position: absolute;
+//  content: " ";
+//  left: 50%;
+//  transform: translate(-50%, -70%);
+//  top: 50%;
+//  width: 76px;
+//  height: 62px;
+//  //background: url("/static/images/cart-empty-new.png") no-repeat;
+//  background-size: cover;
+//}
 </style>
