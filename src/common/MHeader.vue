@@ -221,8 +221,18 @@ export default {
       window.location.href = "/";
     }
   },
-  created() {
-
+  mounted() {
+    let headerBox = document.getElementsByClassName('header-box')[0]
+    let home = document.getElementsByClassName('home')[0]
+    window.addEventListener('scroll',function (){
+      if(document.body.scrollTop>170||document.documentElement.scrollTop>170){
+        headerBox.style.position = 'fixed';
+        home.style.marginTop = '170px';
+      }else {
+        headerBox.style.position = 'static';
+        home.style.marginTop = '0px';
+      }
+    })
   }
 };
 </script>
@@ -245,8 +255,9 @@ export default {
 
   background-color: #8EC5FC;
   background-image: linear-gradient(270deg, #8EC5FC 0%, #f0edf2 100%);
-
-
+  top:0;
+  left:0;
+  z-index:999;
 
 
 
