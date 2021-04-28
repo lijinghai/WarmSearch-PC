@@ -6,6 +6,9 @@ import './plugins/element.js'
 import { getStore } from '@/utils/storage'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import Chat from 'vue-beautiful-chat'
+Vue.use(Chat)
+
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
