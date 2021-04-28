@@ -12,6 +12,8 @@ import GoodsDetailLost from '@/views/GoodsDetailLost'
 import GoodsDetailFind from '@/views/GoodsDetailFind'
 import User from '@/views/User'
 import Registere from '@/views/Registere'
+import PushFind from '@/views/PushFind'
+import PushLost from '@/views/PushLost'
 
 
 
@@ -39,6 +41,14 @@ const routes = [
       {
         path:"thanks",
         component: Thanks
+      },
+      {
+        path:"pushFind",
+        component: PushFind
+      },
+      {
+        path:"pushLost",
+        component: PushLost
       },
       {
         path:'goodsDetail',

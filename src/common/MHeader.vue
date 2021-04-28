@@ -16,10 +16,11 @@
                   suffix-icon="el-icon-search"
                   v-model="productInfo"
                   minlength="1"
-                  maxlength="100"
+                  maxlength="300"
               ></el-input>
               <router-link to="/Lost">全部物品</router-link>
-              <router-link to="/thanks">捐赠</router-link>
+              <router-link to="/PushFind">失物招领</router-link>
+              <router-link to="/PushLost">寻物启事</router-link>
             </div>
 
             <div class="nav-aside">
@@ -404,7 +405,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 22px;
+    margin-right: 0px;
     .el-input {
       width: 305px;
     }
