@@ -19,8 +19,8 @@
                   maxlength="300"
               ></el-input>
               <router-link to="/Lost">全部物品</router-link>
-              <router-link to="/PushFind">失物招领</router-link>
-              <router-link to="/PushLost">寻物启事</router-link>
+              <router-link to="/PushFind">信息发布中心</router-link>
+<!--              <router-link to="/PushLost">寻物启事</router-link>-->
             </div>
 
             <div class="nav-aside">
@@ -415,7 +415,7 @@ header {
       color: #010513;
       display: block;
       font-size: 14px;
-      padding: 0 25px;
+      padding: 10px 13px;
       &:hover {
         color: #fff;
       }
