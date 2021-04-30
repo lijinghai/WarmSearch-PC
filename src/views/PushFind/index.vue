@@ -5,15 +5,15 @@
  -->
 <template>
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-    <el-form-item label="物品名称" prop="name">
-      <el-input v-model="ruleForm.name"></el-input>
+    <el-form-item label="物品名称" prop="goodsName">
+      <el-input v-model="ruleForm.goodsName"></el-input>
     </el-form-item>
 
     <el-form-item label="物品描述" prop="goodsDetail">
       <el-input v-model="ruleForm.goodsDetail"></el-input>
     </el-form-item>
 
-    <el-form-item label="物品图片" prop="image">
+    <el-form-item label="物品图片" prop="url">
 
       <el-upload
           action="#"
@@ -55,31 +55,12 @@
 
     </el-form-item>
 
-    <el-form-item label="物品种类" prop="region">
-      <el-select v-model="ruleForm.region" placeholder="请选择物品种类">
+    <el-form-item label="物品种类" prop="kindId">
+      <el-select v-model="ruleForm.kindId" placeholder="请选择物品种类">
         <el-option label="已失物品" value="shanghai"></el-option>
         <el-option label="待寻物品" value="beijing"></el-option>
       </el-select>
     </el-form-item>
-
-
-<!--    <el-form-item label="活动时间" required>-->
-<!--      <el-col :span="11">-->
-<!--        <el-form-item prop="date1">-->
-<!--          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>-->
-<!--        </el-form-item>-->
-<!--      </el-col>-->
-<!--      <el-col class="line" :span="2">-</el-col>-->
-<!--      <el-col :span="11">-->
-<!--        <el-form-item prop="date2">-->
-<!--          <el-time-picker placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>-->
-<!--        </el-form-item>-->
-<!--      </el-col>-->
-<!--    </el-form-item>-->
-
-<!--    <el-form-item label="即时配送" prop="delivery">-->
-<!--      <el-switch v-model="ruleForm.delivery"></el-switch>-->
-<!--    </el-form-item>-->
 
     <el-form-item label="物品类别" prop="panelId">
       <el-radio-group v-model="ruleForm.panelId">
@@ -98,9 +79,6 @@
       </el-radio-group>
     </el-form-item>
 
-<!--    <el-form-item label="活动形式" prop="desc">-->
-<!--      <el-input type="textarea" v-model="ruleForm.desc"></el-input>-->
-<!--    </el-form-item>-->
 
     <el-form-item>
       <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
@@ -115,49 +93,36 @@ export default {
   data() {
     return {
       ruleForm: {
-        name: '',
+        goodsName: '',
         goodsDetail: '',
-        image: '',
-        region: '',
-        // date1: '',
-        // date2: '',
-        // delivery: false,
+        url: '',
+        kindId: '',
         panelId: '',
         status: '',
-        desc: '',
         dialogImageUrl: '',
         dialogVisible: false,
         disabled: false
       },
       rules: {
-        name: [
+        goodsName: [
           { required: true, message: '请输入遗失物品名称', trigger: 'blur' },
           { min: 3, max: 50, message: '长度在 3 到 50 个字符', trigger: 'blur' }
         ],
         goodsDetail: [
           { required: true, message: '请描述遗失物品详情', trigger: 'blur' },
-          { min: 10, max: 500, message: '长度在 10 到 500 个字符', trigger: 'blur' }
+          { min: 3, max: 500, message: '长度在 3 到 500 个字符', trigger: 'blur' }
         ],
-        image: [
+        url: [
           { required: true, message: '请添加物品图片', trigger: 'blur' },
         ],
-        region: [
+        kindId: [
           { required: true, message: '请选择物品种类', trigger: 'change' }
-        ],
-        date1: [
-          { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-        ],
-        date2: [
-          { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
         ],
         panelId: [
           {  required: true, message: '请至少选择一个物品类别', trigger: 'change' }
         ],
         status: [
           { required: true, message: '请选择物品状态', trigger: 'change' }
-        ],
-        desc: [
-          { required: true, message: '请填写活动形式', trigger: 'blur' }
         ]
       }
     };
@@ -176,9 +141,9 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          alert('发布成功');
         } else {
-          console.log('error submit!!');
+          console.log('请按要求发布信息!!');
           return false;
         }
       });
