@@ -93,12 +93,17 @@ export default {
   data() {
     return {
       ruleForm: {
-        goodsName: '',
-        goodsDetail: '',
-        url: '',
-        kindId: '',
-        panelId: '',
-        status: '',
+        id:undefined, //编号
+        type:2, //是否大图展示
+        goodsId:'id', //物品id 自增
+        createTime:new Date(), //发布时间
+        updatedTime:new Date(), //修改时间
+        goodsName: '', //名称
+        goodsDetail: '', //详情
+        url: '',  //物品地址
+        kindId: '', //物品种类类型 1失物 2待招领
+        panelId: '', //索引 文件类
+        status: '', //状态
         dialogImageUrl: '',
         dialogVisible: false,
         disabled: false
@@ -128,6 +133,29 @@ export default {
     };
   },
   methods: {
+
+    async pushFind() {
+      try {
+        const res = await this.$http.post('/pcgoodsdetail')
+        // const res = await this.$http.get('/pcurgent/goodsid?limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
+        console.log(res)
+        this.product = res.data.data.items
+        console.log(res.data.data.items)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.product = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+    },
+  created() {
+    this.pushFind();
+  },
+
     handleRemove(file) {
       console.log(file);
     },
@@ -148,6 +176,7 @@ export default {
         }
       });
     },
+    //对该表单项进行重置，将其值重置为初始值并移除校验结果
     resetForm(formName) {
       this.$refs[formName].resetFields();
     }

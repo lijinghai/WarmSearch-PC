@@ -3,9 +3,9 @@ module.exports = {
     devServer: {
         port,
         // // eslint-disable-next-line no-unused-vars
-        before(app, serve) {
-
-        }
+        // before(app, serve) {
+        //
+        // }
     }
 }
 
