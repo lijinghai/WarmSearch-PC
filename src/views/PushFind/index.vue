@@ -115,8 +115,8 @@ export default {
       ruleForm: {
         // id: '', //编号
         type:2, //是否大图展示
-        createTime: '', //发布时间
-        updatedTime: '', //修改时间
+        createTime: new Date(), //发布时间
+        updatedTime: new Date(), //修改时间
         goodsName: '', //名称
         goodsDetail: '', //详情
         url: '',  //物品地址
@@ -172,18 +172,20 @@ export default {
       this.$refs[formName].validate((valid) => {
 
         /* json格式提交： */
-        // let formData = JSON.stringify(this.formMess);
+        let formData = JSON.stringify(this.ruleForm);
 
         /* formData格式提交： */
-        let formData = new FormData();
-        for(var key in this.ruleForm){
-          formData.append(key,this.ruleForm[key]);
-        }
+        // let formData = new FormData();
+        // for(var key in this.ruleForm){
+        //   formData.append(key,this.ruleForm[key]);
+        // }
         axios({
           method:"post",
-          url:"/pcgoodsdetail",
+          url:"/pcgoodsdetail/all",
+          cache: false,
           headers: {
-            "Content-Type": "multipart/form-data"
+            contentType: false,
+            processData: false, //默认为true，默认情况下，发送的数据将被转换为对象，设为false不希望进行转换
           },
           withCredentials:true,
           data:formData
