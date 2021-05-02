@@ -17,7 +17,7 @@
         <div class="good-price pr">
           <div class="ds pa">
             <a href>
-              <el-button type="default" size="medium" @click="goodsDetails(goods.goodsId)">查看详情</el-button>
+              <el-button type="default" size="medium" @click="goodsDetails(goods.id)">查看详情</el-button>
             </a>
             <a href="javascript:;">
               <el-button type="primary"
