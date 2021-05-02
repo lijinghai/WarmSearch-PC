@@ -84,49 +84,49 @@
 
 <!----------------------------------------------------------------------------------------------------->
     <!--第三类-->
-<!--    <template v-for="(o,k) in  category" >-->
-<!--      <section class="w mt30 clearfix"  :key="k" v-if="o.id===3">-->
-<!--        <m-shelf :title="o.ctitle"  >-->
-<!--          &lt;!&ndash;内部内容&ndash;&gt;-->
-<!--          <div slot='content' class="floors">-->
-<!--            <template v-for="(o,j) in pcGoodsdetail3">-->
-<!--              &lt;!&ndash;o.type===1 大图显示&ndash;&gt;-->
-<!--              <div class="imgbanner"-->
-<!--                   :key="j"-->
-<!--                   v-if="o.type===1 ">-->
-<!--                <img :src="o.url" alt="">-->
-<!--              </div>-->
-<!--            </template>-->
-<!--            <template v-for="(o,i) in pcGoodsdetail3">-->
-<!--              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>-->
-<!--            </template>-->
-<!--          </div>-->
-<!--        </m-shelf>-->
-<!--      </section>-->
-<!--    </template>-->
+    <template v-for="(o,k) in  category" >
+      <section class="w mt30 clearfix"  :key="k" v-if="o.id===3">
+        <m-shelf :title="o.ctitle"  >
+          <!--内部内容-->
+          <div slot='content' class="floors">
+            <template v-for="(o,j) in pcGoodsdetail3">
+              <!--o.type===1 大图显示-->
+              <div class="imgbanner"
+                   :key="j"
+                   v-if="o.type===1 ">
+                <img :src="o.url" alt="">
+              </div>
+            </template>
+            <template v-for="(o,i) in pcGoodsdetail3">
+              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>
+            </template>
+          </div>
+        </m-shelf>
+      </section>
+    </template>
 
 <!----------------------------------------------------------------------------------------------------->
     <!--第四类-->
-<!--    <template v-for="(o,k) in  category" >-->
-<!--      <section class="w mt30 clearfix"  :key="k" v-if="o.id===4">-->
-<!--        <m-shelf :title="o.ctitle"  >-->
-<!--          &lt;!&ndash;内部内容&ndash;&gt;-->
-<!--          <div slot='content' class="floors">-->
-<!--            <template v-for="(o,j) in pcGoodsdetail4">-->
-<!--              &lt;!&ndash;o.type===1 大图显示&ndash;&gt;-->
-<!--              <div class="imgbanner"-->
-<!--                   :key="j"-->
-<!--                   v-if="o.type===1 ">-->
-<!--                <img :src="o.url" alt="">-->
-<!--              </div>-->
-<!--            </template>-->
-<!--            <template v-for="(o,i) in pcGoodsdetail4">-->
-<!--              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>-->
-<!--            </template>-->
-<!--          </div>-->
-<!--        </m-shelf>-->
-<!--      </section>-->
-<!--    </template>-->
+    <template v-for="(o,k) in  category" >
+      <section class="w mt30 clearfix"  :key="k" v-if="o.id===4">
+        <m-shelf :title="o.ctitle"  >
+          <!--内部内容-->
+          <div slot='content' class="floors">
+            <template v-for="(o,j) in pcGoodsdetail4">
+              <!--o.type===1 大图显示-->
+              <div class="imgbanner"
+                   :key="j"
+                   v-if="o.type===1 ">
+                <img :src="o.url" alt="">
+              </div>
+            </template>
+            <template v-for="(o,i) in pcGoodsdetail4">
+              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>
+            </template>
+          </div>
+        </m-shelf>
+      </section>
+    </template>
 
   </div>
 </div>
@@ -149,8 +149,8 @@ export default {
       urgent:[],
       pcGoodsdetail1:[],
       pcGoodsdetail2:[],
-      // pcGoodsdetail3:[],
-      // pcGoodsdetail4:[]
+      pcGoodsdetail3:[],
+      pcGoodsdetail4:[]
     }
   },
   components: {
@@ -277,46 +277,46 @@ export default {
 
 
     // --------------------------------------------------------------------------
-    // async pcGoodsdetailc() {
-    //   try {
-    //     const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=3')
-    //     console.log(res)
-    //     let data = res.data;
-    //     if (data.code == 20000){
-    //       let items = data.data.items;
-    //       console.log(items)
-    //       this.pcGoodsdetail3 = items;
-    //       //获取最新物品信息数据
-    //       // let item = items.find(item => item.type == 1);
-    //       // console.log(item)
-    //       // this.category = items;
-    //       console.log(items)
-    //     }
-    //   } catch (error) {
-    //     console.log(error.message)
-    //   }
-    // },
+    async pcGoodsdetailc() {
+      try {
+        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=3')
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.pcGoodsdetail3 = items;
+          //获取最新物品信息数据
+          // let item = items.find(item => item.type == 1);
+          // console.log(item)
+          // this.category = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+    },
 
     //----------------------------------------------------------------------------------------
-    // async pcGoodsdetaild() {
-    //   try {
-    //     const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=4')
-    //     console.log(res)
-    //     let data = res.data;
-    //     if (data.code == 20000){
-    //       let items = data.data.items;
-    //       console.log(items)
-    //       this.pcGoodsdetail4 = items;
-    //       //获取最新物品信息数据
-    //       // let item = items.find(item => item.type == 1);
-    //       // console.log(item)
-    //       // this.category = items;
-    //       console.log(items)
-    //     }
-    //   } catch (error) {
-    //     console.log(error.message)
-    //   }
-    // }
+    async pcGoodsdetaild() {
+      try {
+        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=4')
+        console.log(res)
+        let data = res.data;
+        if (data.code == 20000){
+          let items = data.data.items;
+          console.log(items)
+          this.pcGoodsdetail4 = items;
+          //获取最新物品信息数据
+          // let item = items.find(item => item.type == 1);
+          // console.log(item)
+          // this.category = items;
+          console.log(items)
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
   },
   created() {
     this.pcCarousel();
@@ -326,7 +326,7 @@ export default {
     this.pcGoodsdetaila();
     this.pcGoodsdetailb();
     this.pcGoodsdetailc();
-    // this.pcGoodsdetaild();
+    this.pcGoodsdetaild();
   }
 }
 </script>

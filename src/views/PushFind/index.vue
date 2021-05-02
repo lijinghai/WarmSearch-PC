@@ -16,9 +16,14 @@
     <el-form-item label="物品图片" prop="url">
 
       <el-upload
-          action="/pcgoodsdetail"
+          ref="upload"
+          name="file"
+          class="upload-demo"
+          action="http://localhost:8091/upload"
+          :on-success="beforeUpload"
+          :on-remove="handleRemove"
           list-type="picture-card"
-          :auto-upload="false">
+      >
         <i slot="default" class="el-icon-plus"></i>
         <div slot="file" slot-scope="{file}">
           <img
@@ -68,7 +73,7 @@
         <el-option label="证件类" value="2"></el-option>
         <el-option label="现金类" value="3"></el-option>
         <el-option label="电子类" value="4"></el-option>
-        <el-option label="数码类" value="5"></el-option>
+<!--        <el-option label="数码类" value="5"></el-option>-->
       </el-select>
     </el-form-item>
 
@@ -108,11 +113,10 @@ export default {
       dialogVisible: false,
       disabled: false,
       ruleForm: {
-        // id:undefined, //编号
+        // id: '', //编号
         type:2, //是否大图展示
-        goodsId: 'this.id', //物品id 自增
-        createTime:new Date(), //发布时间
-        updatedTime:new Date(), //修改时间
+        createTime: '', //发布时间
+        updatedTime: '', //修改时间
         goodsName: '', //名称
         goodsDetail: '', //详情
         url: '',  //物品地址
@@ -145,81 +149,55 @@ export default {
     };
   },
   methods: {
-
-  //   async pushFind() {
-  //     try {
-  //       const res = await this.$http.post('/pcgoodsdetail')
-  //       // const res = await this.$http.get('/pcurgent/goodsid?limit=19&page=1&sort=1&goodsId='+this.$route.query.goodsId)
-  //       console.log(res)
-  //       this.product = res.data.data.items
-  //       console.log(res.data.data.items)
-  //       let data = res.data;
-  //       if (data.code == 20000){
-  //         let items = data.data.items;
-  //         console.log(items)
-  //         this.product = items;
-  //         console.log(items)
-  //       }
-  //     } catch (error) {
-  //       console.log(error.message)
-  //     }
-  //   },
-  // created() {
-  //   this.pushFind();
-  // },
-
+    beforeUpload(file) {
+      this.ruleForm.url =file.url
+      console.log(file.url)
+    },
     handleRemove(file) {
-      console.log(file);
+      this.dialogImageUrl = file.url;
+      console.log(file.response.url)
     },
     handlePictureCardPreview(file) {
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
+      console.log(file.url)
     },
     handleDownload(file) {
-      console.log(file);
+      this.dialogImageUrl = file.url;
+      console.log(file.url)
     },
-    submitForm() {
 
+    submitForm(formName) {
 
-      /* json格式提交： */
-      // let formData = JSON.stringify(this.formMess);
+      this.$refs[formName].validate((valid) => {
 
-      /* formData格式提交： */
-      let formData = new FormData();
-      for(var key in this.ruleForm){
-        formData.append(key,this.ruleForm[key]);
-      }
-      axios({
-        method:"post",
-        url:"/pcgoodsdetail",
-        headers: {
-          "Content-Type": "multipart/form-data"
-        },
-        withCredentials:true,
-        data:formData
-      }).then((res)=>{
-        console.log(res);
+        /* json格式提交： */
+        // let formData = JSON.stringify(this.formMess);
+
+        /* formData格式提交： */
+        let formData = new FormData();
+        for(var key in this.ruleForm){
+          formData.append(key,this.ruleForm[key]);
+        }
+        axios({
+          method:"post",
+          url:"/pcgoodsdetail",
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          withCredentials:true,
+          data:formData
+        }).then((res)=>{
+          console.log(res);
+        });
+
+        if (valid) {
+          alert('发布成功');
+        } else {
+          alert('请按要求发布信息!!');
+          return false;
+        }
       });
-      // this.goodsId = this.ruleForm.id;
-      // this.$refs[formName].validate((valid) => {
-      //   if (valid) {
-      //     alert('发布成功');
-      //     // eslint-disable-next-line no-undef
-      //     pushFind(this.temp).then(() => {
-      //       this.list.unshift(this.temp)
-      //       this.dialogFormVisible = false
-      //       this.$notify({
-      //         title: 'Success',
-      //         message: 'Created Successfully',
-      //         type: 'success',
-      //         duration: 2000
-      //       })
-      //     })
-      //   } else {
-      //     console.log('请按要求发布信息!!');
-      //     return false;
-      //   }
-      // });
     },
     //对该表单项进行重置，将其值重置为初始值并移除校验结果
     resetForm(formName) {
