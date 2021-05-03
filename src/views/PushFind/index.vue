@@ -216,11 +216,11 @@ export default {
 
 
 
-
-
-
         if (valid) {
           alert('发布成功');
+          this.$router.push({
+            name: "home"
+          })
         } else {
           alert('请按要求发布信息!!');
           return false;
