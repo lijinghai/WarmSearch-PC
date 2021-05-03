@@ -171,27 +171,53 @@ export default {
 
       this.$refs[formName].validate((valid) => {
 
+
+
         /* json格式提交： */
         let formData = JSON.stringify(this.ruleForm);
 
-        /* formData格式提交： */
-        // let formData = new FormData();
-        // for(var key in this.ruleForm){
-        //   formData.append(key,this.ruleForm[key]);
-        // }
         axios({
-          method:"post",
-          url:"/pcgoodsdetail/all",
-          cache: false,
-          headers: {
-            contentType: false,
-            processData: false, //默认为true，默认情况下，发送的数据将被转换为对象，设为false不希望进行转换
-          },
-          withCredentials:true,
-          data:formData
+        method:"post",
+        url:"/pcgoodsdetail/all",
+        // cache: false,
+        headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        // processData: false, //默认为true，默认情况下，发送的数据将被转换为对象，设为false不希望进行转换
+        },
+        withCredentials:true,
+        data:formData
         }).then((res)=>{
-          console.log(res);
+        console.log(res);
         });
+
+
+
+        // /* json格式提交： */
+        // let formData = JSON.stringify(this.ruleForm);
+        //
+        // /* formData格式提交： */
+        // // let formData = new FormData();
+        // // for(var key in this.ruleForm){
+        // //   formData.append(key,this.ruleForm[key]);
+        // // }
+        // axios({
+        //   method:"post",
+        //   url:"/pcgoodsdetail/all",
+        //   // cache: false,
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //     // processData: false, //默认为true，默认情况下，发送的数据将被转换为对象，设为false不希望进行转换
+        //   },
+        //   withCredentials:true,
+        //   data:formData
+        // }).then((res)=>{
+        //   console.log(res);
+        // });
+
+
+
+
+
 
         if (valid) {
           alert('发布成功');
