@@ -13,7 +13,7 @@ import GoodsDetailFind from '@/views/GoodsDetailFind'
 import User from '@/views/User'
 import Registere from '@/views/Registere'
 import PushFind from '@/views/PushFind'
-import PushLost from '@/views/PushLost'
+import Attestation from '@/views/Attestation'
 
 
 
@@ -47,8 +47,8 @@ const routes = [
         component: PushFind
       },
       {
-        path:"pushLost",
-        component: PushLost
+        path:"attestation",
+        component: Attestation
       },
       {
         path:'goodsDetail',

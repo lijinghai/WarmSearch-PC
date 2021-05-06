@@ -54,6 +54,7 @@ export default {
         cancelButtonText: '看错了'
       })
           .then(() => {
+            this.$router.push('/Attestation')
             this.$message({
               type: 'info',
               message: '很高兴我的平台可以帮到您'

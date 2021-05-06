@@ -41,11 +41,10 @@
           <span class="params-name">发布时间:{{item.create_time}}</span>
         </div>
         <div class="buy">
-          <!--          <el-button-->
-          <!--              type="primary"-->
-          <!--          >加入购物车</el-button>-->
+
+          <span class="params-name">现在正在认领的人是: <span class="username">{{userInfo.data.username}}</span></span>
           <el-button type="danger" :plain="true" @click="open">现在认领</el-button>
-          <span class="params-name">现在正在认领的人是:{{userInfo.data.username}}</span>
+
 
         </div>
       </div>
@@ -83,9 +82,11 @@ export default {
         cancelButtonText: '看错了'
       })
           .then(() => {
+            this.$router.push('/Attestation')
             this.$message({
               type: 'info',
-              message: '很高兴我的平台可以帮到您'
+              message: '很高兴我的平台可以帮到您',
+
             });
           })
           .catch(action => {
@@ -133,6 +134,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/style/mixin";
+
+.username{
+  color: #007bff;
+  font-size:20px;
+  font-weight: bold;
+}
 
 .store-content {
   clear: both;

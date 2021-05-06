@@ -20,7 +20,7 @@
               ></el-input>
               <router-link to="/Lost">全部物品</router-link>
               <router-link to="/PushFind">信息发布中心</router-link>
-<!--              <router-link to="/PushLost">寻物启事</router-link>-->
+<!--              <router-link to="/Attestation">寻物启事</router-link>-->
             </div>
 
             <div class="nav-aside">
