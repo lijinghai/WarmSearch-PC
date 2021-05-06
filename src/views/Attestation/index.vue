@@ -87,9 +87,15 @@
 </template>
 
 <script>
+import axios from "axios";
+
+
 export default {
   data() {
     return {
+      dialogImageUrl: '',
+      dialogVisible: false,
+      disabled: false,
       ruleForm: {
         name: '',
         region: '',
@@ -127,16 +133,60 @@ export default {
     };
   },
   methods: {
+    beforeUpload(file) {
+      this.ruleForm.url =file.url
+      console.log(file.url)
+    },
+    handleRemove(file) {
+      this.dialogImageUrl = file.url;
+      console.log(file.response.url)
+    },
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+      console.log(file.url)
+    },
+    handleDownload(file) {
+      this.dialogImageUrl = file.url;
+      console.log(file.url)
+    },
+
     submitForm(formName) {
+
       this.$refs[formName].validate((valid) => {
+
+
+
+        /* json格式提交： */
+        let formData = JSON.stringify(this.ruleForm);
+
+        axios({
+          method:"post",
+          // url:"/pcgoodsdetail/all",
+          // cache: false,
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            // processData: false, //默认为true，默认情况下，发送的数据将被转换为对象，设为false不希望进行转换
+          },
+          withCredentials:true,
+          data:formData
+        }).then((res)=>{
+          console.log(res);
+        });
+
+
         if (valid) {
-          alert('submit!');
+          alert('恭喜您领取到您的遗失物品，请静候我们的工作人员与您的联系');
+          this.$router.push({
+            name: "home"
+          })
         } else {
-          console.log('error submit!!');
+          alert('请按要求填写您的信息!!');
           return false;
         }
       });
     },
+    //对该表单项进行重置，将其值重置为初始值并移除校验结果
     resetForm(formName) {
       this.$refs[formName].resetFields();
     }
