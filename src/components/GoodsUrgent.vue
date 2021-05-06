@@ -57,7 +57,7 @@ export default {
             this.$router.push('/Attestation')
             this.$message({
               type: 'info',
-              message: '很高兴我的平台可以帮到您'
+              message: '很高兴我的平台可以帮到您,为了防止恶意认领现象的发生请输入您的信息'
             });
           })
           .catch(action => {
