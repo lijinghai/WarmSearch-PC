@@ -1,54 +1,85 @@
 <!--
- * @Description: 寻物启事发布信息页面
+ * @Description: 用户认证信息页面
  * @Author: lijinghailjh@163.com
- * @Date: 2021/4/28
+ * @Date: 2021/5/7
  -->
 <template>
 
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-    <el-form-item label="活动名称" prop="name">
-      <el-input v-model="ruleForm.name"></el-input>
+    <el-form-item label=" " class="nav">
+      <span class="nav_1">广而告之:</span>
+      <span class="nav_2"> 很高兴我的平台可以帮到您,为了防止恶意认领现象的发生请登录您的信息，还望谅解！</span>
     </el-form-item>
-    <el-form-item label="活动区域" prop="region">
-      <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-        <el-option label="区域一" value="shanghai"></el-option>
-        <el-option label="区域二" value="beijing"></el-option>
-      </el-select>
+
+    <el-form-item label="被认领的物品名称" prop="goodsDetail" label-width="150px">
+      <el-input v-model="ruleForm.goodsDetail"></el-input>
     </el-form-item>
-    <el-form-item label="活动时间" required>
-      <el-col :span="11">
-        <el-form-item prop="date1">
-          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-        </el-form-item>
-      </el-col>
-      <el-col class="line" :span="2">-</el-col>
-      <el-col :span="11">
-        <el-form-item prop="date2">
-          <el-time-picker placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-        </el-form-item>
-      </el-col>
+
+    <el-form-item label="认领人的姓名" prop="goodsDetail" label-width="150px">
+      <el-input v-model="ruleForm.goodsDetail"></el-input>
     </el-form-item>
-    <el-form-item label="即时配送" prop="delivery">
-      <el-switch v-model="ruleForm.delivery"></el-switch>
+
+    <el-form-item label="认领人的联系方式" prop="goodsDetail" label-width="150px">
+      <el-input v-model="ruleForm.goodsDetail"></el-input>
     </el-form-item>
-    <el-form-item label="活动性质" prop="type">
-      <el-checkbox-group v-model="ruleForm.type">
-        <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-        <el-checkbox label="地推活动" name="type"></el-checkbox>
-        <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-        <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-      </el-checkbox-group>
+
+    <el-form-item label="认领人的学号/工号" prop="goodsDetail" label-width="150px">
+      <el-input v-model="ruleForm.goodsDetail"></el-input>
     </el-form-item>
-    <el-form-item label="特殊资源" prop="resource">
-      <el-radio-group v-model="ruleForm.resource">
-        <el-radio label="线上品牌商赞助"></el-radio>
-        <el-radio label="线下场地免费"></el-radio>
-      </el-radio-group>
+
+    <el-form-item label="认领人的地址" prop="goodsDetail" label-width="150px">
+      <el-input v-model="ruleForm.goodsDetail"></el-input>
     </el-form-item>
-    <el-form-item label="活动形式" prop="desc">
-      <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+
+
+    <el-form-item label="认领人的证件照" prop="goodsDetail" label-width="150px">
+
+      <el-upload
+          ref="upload"
+          name="file"
+          class="upload-demo"
+          action="http://localhost:8091/upload"
+          :on-success="beforeUpload"
+          :on-remove="handleRemove"
+          list-type="picture-card"
+      >
+        <i slot="default" class="el-icon-plus"></i>
+        <div slot="file" slot-scope="{file}">
+          <img
+              class="el-upload-list__item-thumbnail"
+              :src="file.url" alt=""
+          >
+          <span class="el-upload-list__item-actions">
+        <span
+            class="el-upload-list__item-preview"
+            @click="handlePictureCardPreview(file)"
+        >
+          <i class="el-icon-zoom-in"></i>
+        </span>
+        <span
+            v-if="!disabled"
+            class="el-upload-list__item-delete"
+            @click="handleDownload(file)"
+        >
+          <i class="el-icon-download"></i>
+        </span>
+        <span
+            v-if="!disabled"
+            class="el-upload-list__item-delete"
+            @click="handleRemove(file)"
+        >
+          <i class="el-icon-delete"></i>
+        </span>
+      </span>
+        </div>
+      </el-upload>
+      <el-dialog :visible.sync="dialogVisible">
+        <img width="100%" :src="dialogImageUrl" alt="">
+      </el-dialog>
+
     </el-form-item>
-    <el-form-item>
+
+    <el-form-item label-width="150px">
       <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
       <el-button @click="resetForm('ruleForm')">重置</el-button>
     </el-form-item>
@@ -74,7 +105,7 @@ export default {
           { required: true, message: '请输入活动名称', trigger: 'blur' },
           { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
         ],
-        region: [
+        goodsDetail: [
           { required: true, message: '请选择活动区域', trigger: 'change' }
         ],
         date1: [
@@ -114,5 +145,12 @@ export default {
 </script>
 
 <style scoped>
-
+.nav{
+  text-align:center;
+}
+.nav_1{
+  font-size:20px;
+  color: #0088ff;
+  font-weight: bold;
+}
 </style>
