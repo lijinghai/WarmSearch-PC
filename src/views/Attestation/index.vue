@@ -11,28 +11,28 @@
       <span class="nav_2"> 很高兴我的平台可以帮到您,为了防止恶意认领现象的发生请登录您的信息，还望谅解！</span>
     </el-form-item>
 
-    <el-form-item label="被认领的物品名称" prop="goodsDetail" label-width="150px">
-      <el-input v-model="ruleForm.goodsDetail"></el-input>
+    <el-form-item label="被认领的物品名称" prop="goodsName" label-width="150px">
+        <el-input v-model="ruleForm.goodsName"></el-input>
     </el-form-item>
 
-    <el-form-item label="认领人的姓名" prop="goodsDetail" label-width="150px">
-      <el-input v-model="ruleForm.goodsDetail"></el-input>
+    <el-form-item label="认领人的姓名" prop="userName" label-width="150px">
+      <el-input v-model="ruleForm.userName"></el-input>
     </el-form-item>
 
-    <el-form-item label="认领人的联系方式" prop="goodsDetail" label-width="150px">
-      <el-input v-model="ruleForm.goodsDetail"></el-input>
+    <el-form-item label="认领人的联系方式" prop="contact" label-width="150px">
+      <el-input v-model="ruleForm.contact"></el-input>
     </el-form-item>
 
-    <el-form-item label="认领人的学号/工号" prop="goodsDetail" label-width="150px">
-      <el-input v-model="ruleForm.goodsDetail"></el-input>
+    <el-form-item label="认领人的学号/工号" prop="number" label-width="150px">
+      <el-input v-model="ruleForm.number"></el-input>
     </el-form-item>
 
-    <el-form-item label="认领人的地址" prop="goodsDetail" label-width="150px">
-      <el-input v-model="ruleForm.goodsDetail"></el-input>
+    <el-form-item label="认领人的地址" prop="address" label-width="150px">
+      <el-input v-model="ruleForm.address"></el-input>
     </el-form-item>
 
 
-    <el-form-item label="认领人的证件照" prop="goodsDetail" label-width="150px">
+    <el-form-item label="认领人的证件照" prop="imgUrl" label-width="150px">
 
       <el-upload
           ref="upload"
@@ -97,44 +97,43 @@ export default {
       dialogVisible: false,
       disabled: false,
       ruleForm: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        goodsName: '',
+        userName: '',
+        contact: '',
+        number: '',
+        address: '',
+        imgUrl: ''
       },
       rules: {
-        name: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+        userName: [
+          { required: true, message: '请输入被认领的物品名称', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }
         ],
-        goodsDetail: [
-          { required: true, message: '请选择活动区域', trigger: 'change' }
+        goodsName: [
+          { required: true, message: '请输入认领人的姓名', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }
         ],
-        date1: [
-          { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+        contact: [
+          { required: true, message: '请输入认领人的联系方式', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }
         ],
-        date2: [
-          { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+        number: [
+          { required: true, message: '请输入认领人的学号/工号', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }
         ],
-        type: [
-          { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+        address: [
+          { required: true, message: '请输入认领人的地址', trigger: 'blur' },
+          { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }
         ],
-        resource: [
-          { required: true, message: '请选择活动资源', trigger: 'change' }
+        imgUrl: [
+          { required: true, message: '请上传认领人的证件照', trigger: 'change' }
         ],
-        desc: [
-          { required: true, message: '请填写活动形式', trigger: 'blur' }
-        ]
       }
     };
   },
   methods: {
     beforeUpload(file) {
-      this.ruleForm.url =file.url
+      this.ruleForm.imgUrl =file.url
       console.log(file.url)
     },
     handleRemove(file) {
@@ -162,7 +161,7 @@ export default {
 
         axios({
           method:"post",
-          // url:"/pcgoodsdetail/all",
+          url:"/pcattestation/all",
           // cache: false,
           headers: {
             "Content-Type": "application/json;charset=UTF-8",
@@ -199,8 +198,11 @@ export default {
   text-align:center;
 }
 .nav_1{
-  font-size:20px;
+  font-size:25px;
   color: #0088ff;
   font-weight: bold;
+}
+.nav_2{
+  font-size:20px;
 }
 </style>
