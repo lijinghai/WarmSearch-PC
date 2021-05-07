@@ -5,6 +5,11 @@
  -->
 <template>
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+    <el-form-item label="" class="nav">
+      <span class="nav_1">我们的宗旨：</span>
+      <span class="nav_2">为失主寻失物，为失物找归宿。</span>
+    </el-form-item>
+
     <el-form-item label="物品名称" prop="goodsName">
       <el-input v-model="ruleForm.goodsName"></el-input>
     </el-form-item>
@@ -237,5 +242,15 @@ export default {
 
 
 <style scoped>
-
+.nav{
+  text-align:center;
+}
+.nav_1{
+  font-size:25px;
+  color: #0088ff;
+  font-weight: bold;
+}
+.nav_2{
+  font-size:20px;
+}
 </style>
