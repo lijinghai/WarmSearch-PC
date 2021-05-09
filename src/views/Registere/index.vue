@@ -62,9 +62,19 @@ export default {
   },
   methods:{
     returnhome(){
+      this.$message({
+        showClose: true,
+        message: '注册账号可以获取更多我们平台的权限',
+        type: 'success'
+      });
       this.$router.replace('/');
     },
     submitForm(formName) {
+      this.$message({
+        showClose: true,
+        message: '注册成功，我们的平台欢迎您的加入，请登录',
+        type: 'success'
+      });
       this.$refs[formName].validate(async valid => {
         if (valid) {
           //   获取用户名和密码

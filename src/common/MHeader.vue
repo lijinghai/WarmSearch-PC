@@ -323,6 +323,11 @@ export default {
       });
     },
     logout() {
+      this.$message({
+        showClose: true,
+        message: '风里雨里，我们都在这等您回来，欢迎您的下次使用',
+        type: 'success'
+      });
       removeStore("token");
       // removeStore("buyCart");
       window.location.href = "/";

@@ -63,9 +63,19 @@ export default {
   },
   methods:{
     returnhome(){
+      this.$message({
+        showClose: true,
+        message: '风里雨里，我们都在这等您回来，欢迎您的下次使用',
+        type: 'success'
+      });
       this.$router.replace('/');
     },
     submitForm(formName) {
+      this.$message({
+        showClose: true,
+        message: '真诚的希望我们的平台可以帮助到您',
+        type: 'success'
+      });
       this.$refs[formName].validate(async valid => {
         if (valid) {
           //   获取用户名和密码
