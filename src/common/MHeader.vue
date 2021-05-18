@@ -112,17 +112,14 @@
                       <!-- 总件数 -->
                       <div class="nav-cart-total">
                         <p class="a">
-<!--                          共-->
-<!--                          <strong>{{totalNum}}</strong> 件商品-->
-<!--                          {{userInfo.data.username}}用户您好：-->
+
                         </p>
                         <h5>
                           亲爱的网站体验者您好：
-<!--                          <span class="price-icon">¥</span>-->
-<!--                          <span class="price-num">111</span>-->
+
                         </h5>
                         <h6>
-<!--                          <el-button type="danger">去购物车</el-button>-->
+
                           <template>
                             <div>
                               <el-button
@@ -137,8 +134,7 @@
                         </h6>
                       </div>
                     </div>
-<!--                    <div style="height: 313px;text-align: center" class="cart-con" v-if='!totalNum'>-->
-<!--                    不是吧，居然没有你要的东西？？？-->
+
                     <div style="height: 313px;text-align: center" class="cart-con">
                       <p>本网站目前仍在不断完善中，可能部分功能不太完善，凭我艺人之力，不太可能将本网站做的完美；
                         所有，我恳请有更多的志同道合的人来加入我们，一起来完善我的项目
