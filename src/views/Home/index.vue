@@ -83,50 +83,50 @@
     </template>
 
 <!----------------------------------------------------------------------------------------------------->
-    <!--第三类-->
-    <template v-for="(o,k) in  category" >
-      <section class="w mt30 clearfix"  :key="k" v-if="o.id===3">
-        <m-shelf :title="o.ctitle"  >
-          <!--内部内容-->
-          <div slot='content' class="floors">
-            <template v-for="(o,j) in pcGoodsdetail3">
-              <!--o.type===1 大图显示-->
-              <div class="imgbanner"
-                   :key="j"
-                   v-if="o.type===1 ">
-                <img :src="o.url" alt="">
-              </div>
-            </template>
-            <template v-for="(o,i) in pcGoodsdetail3">
-              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>
-            </template>
-          </div>
-        </m-shelf>
-      </section>
-    </template>
+<!--    &lt;!&ndash;第三类&ndash;&gt;-->
+<!--    <template v-for="(o,k) in  category" >-->
+<!--      <section class="w mt30 clearfix"  :key="k" v-if="o.id===3">-->
+<!--        <m-shelf :title="o.ctitle"  >-->
+<!--          &lt;!&ndash;内部内容&ndash;&gt;-->
+<!--          <div slot='content' class="floors">-->
+<!--            <template v-for="(o,j) in pcGoodsdetail3">-->
+<!--              &lt;!&ndash;o.type===1 大图显示&ndash;&gt;-->
+<!--              <div class="imgbanner"-->
+<!--                   :key="j"-->
+<!--                   v-if="o.type===1 ">-->
+<!--                <img :src="o.url" alt="">-->
+<!--              </div>-->
+<!--            </template>-->
+<!--            <template v-for="(o,i) in pcGoodsdetail3">-->
+<!--              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>-->
+<!--            </template>-->
+<!--          </div>-->
+<!--        </m-shelf>-->
+<!--      </section>-->
+<!--    </template>-->
 
-<!----------------------------------------------------------------------------------------------------->
-    <!--第四类-->
-    <template v-for="(o,k) in  category" >
-      <section class="w mt30 clearfix"  :key="k" v-if="o.id===4">
-        <m-shelf :title="o.ctitle"  >
-          <!--内部内容-->
-          <div slot='content' class="floors">
-            <template v-for="(o,j) in pcGoodsdetail4">
-              <!--o.type===1 大图显示-->
-              <div class="imgbanner"
-                   :key="j"
-                   v-if="o.type===1 ">
-                <img :src="o.url" alt="">
-              </div>
-            </template>
-            <template v-for="(o,i) in pcGoodsdetail4">
-              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>
-            </template>
-          </div>
-        </m-shelf>
-      </section>
-    </template>
+<!--&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--    &lt;!&ndash;第四类&ndash;&gt;-->
+<!--    <template v-for="(o,k) in  category" >-->
+<!--      <section class="w mt30 clearfix"  :key="k" v-if="o.id===4">-->
+<!--        <m-shelf :title="o.ctitle"  >-->
+<!--          &lt;!&ndash;内部内容&ndash;&gt;-->
+<!--          <div slot='content' class="floors">-->
+<!--            <template v-for="(o,j) in pcGoodsdetail4">-->
+<!--              &lt;!&ndash;o.type===1 大图显示&ndash;&gt;-->
+<!--              <div class="imgbanner"-->
+<!--                   :key="j"-->
+<!--                   v-if="o.type===1 ">-->
+<!--                <img :src="o.url" alt="">-->
+<!--              </div>-->
+<!--            </template>-->
+<!--            <template v-for="(o,i) in pcGoodsdetail4">-->
+<!--              <goods :goods="o"  :key="i" v-if="o.type!=1"></goods>-->
+<!--            </template>-->
+<!--          </div>-->
+<!--        </m-shelf>-->
+<!--      </section>-->
+<!--    </template>-->
 
   </div>
 </div>
