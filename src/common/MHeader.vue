@@ -1,5 +1,6 @@
 <template>
   <div class="header-box">
+
     <div>
       <header class="w">
         <div class="w-box">
@@ -176,7 +177,9 @@
         </div>
       </slot>
     </div>
-    <div>
+
+
+<!--    <div>-->
 <!--      <beautiful-chat-->
 <!--          :participants="participants"-->
 <!--          :titleImageUrl="titleImageUrl"-->
@@ -200,9 +203,13 @@
 <!--          :messageStyling="messageStyling"-->
 <!--          @onType="handleOnType"-->
 <!--          @edit="editMessage" />-->
-    </div>
-  </div>
+<!--    </div>-->
 
+
+    <el-backtop target="header-box"></el-backtop>
+
+
+  </div>
 </template>
 
 
@@ -964,6 +971,8 @@ header {
     font-size: 16px;
   }
 }
+
+
 
 //.cart-con:before {
 //  position: absolute;
