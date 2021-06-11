@@ -110,7 +110,7 @@ export default {
     },
     async getGoodsAlllLost() {
       try {
-        const res = await this.$http.get('/pcgoodsdetail/allkinds?id=1&limit='+this.pageSize+'&page='+this.currentPage+'&sort='+this.sort)
+        const res = await this.$http.get('/pcgoodsdetail/allkinds?id=1&limit='+this.pageSize+'&page='+this.currentPage+'&sort=-1')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){

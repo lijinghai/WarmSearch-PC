@@ -161,7 +161,7 @@ export default {
   methods:{
     async carousel() {
       try {
-        const res = await this.$http.get('/pccarousel?limit=19&page=1&sort=1')
+        const res = await this.$http.get('/pccarousel?limit=19&page=1&sort=-1')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
@@ -181,7 +181,7 @@ export default {
     },
     async pcCarousel() {
       try {
-        const res = await this.$http.get('/pcrecent?limit=4&page=1&sort=1')
+        const res = await this.$http.get('/pcrecent?limit=4&page=1&sort=-1')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
@@ -200,7 +200,7 @@ export default {
     },
     async category1() {
       try {
-        const res = await this.$http.get('/category/all?limit=19&page=1&sort=1')
+        const res = await this.$http.get('/category/all?limit=19&page=1&sort=-1')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
@@ -219,7 +219,7 @@ export default {
     },
     async urgent1() {
       try {
-        const res = await this.$http.get('/pcurgent?limit=2&page=1&sort=1')
+        const res = await this.$http.get('/pcurgent?limit=2&page=1&sort=-1')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
@@ -238,7 +238,7 @@ export default {
     },
     async pcGoodsdetaila() {
       try {
-        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=1')
+        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=-1&id=1')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
@@ -257,7 +257,7 @@ export default {
     },
     async pcGoodsdetailb() {
       try {
-        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=2')
+        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=-1&id=2')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
@@ -279,7 +279,7 @@ export default {
     // --------------------------------------------------------------------------
     async pcGoodsdetailc() {
       try {
-        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=3')
+        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=-1&id=3')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
@@ -300,7 +300,7 @@ export default {
     //----------------------------------------------------------------------------------------
     async pcGoodsdetaild() {
       try {
-        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=1&id=4')
+        const res = await this.$http.get('/pcgoodsdetail/all?limit=19&page=1&sort=-1&id=4')
         console.log(res)
         let data = res.data;
         if (data.code == 20000){
