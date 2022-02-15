@@ -156,6 +156,7 @@ export default {
   methods: {
     beforeUpload(file) {
       this.ruleForm.url =file.url
+      console.log(file)
       console.log(file.url)
     },
     handleRemove(file) {
